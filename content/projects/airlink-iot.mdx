@@ -4,6 +4,9 @@ description: 'A web-based dashboard built to control and monitor a smart IoT fan
 tags: ['IoT', 'React', 'Node.js', 'WebSocket']
 githubUrl: 'https://github.com/rezxlnz/airlink-iot'
 liveUrl: 'https://airlink.example.com'
+year: '2024'
+category: 'IoT Dashboard'
+role: 'Fullstack Developer'
 ---
 
 ## Overview
@@ -19,3 +22,7 @@ AirLink IoT is a comprehensive dashboard designed to provide real-time control a
 ### Architecture
 
 The backend is powered by a Node.js server interacting with the IoT device via MQTT, while the frontend communicates to the server using highly-optimized React components and WebSockets.
+
+### Challenges
+
+One of the main challenges was ensuring consistent, low-latency communication between the web client and the physical fan over an unstable network. We resolved this by implementing custom reconnection logic in the WebSocket layer.

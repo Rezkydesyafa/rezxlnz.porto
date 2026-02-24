@@ -27,7 +27,7 @@ export default function RootLayout({
       >
         <LangProvider>
           <Sidebar />
-          <main className='flex-1 ml-[226px] p-8 md:p-12 lg:p-16'>
+          <main className='flex-1 ml-[250px] p-8 md:p-12 lg:p-16'>
             {children}
           </main>
         </LangProvider>
