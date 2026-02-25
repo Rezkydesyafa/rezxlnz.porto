@@ -1,69 +1,47 @@
-import Link from 'next/link';
-import { ArrowLeft, Trophy } from 'lucide-react';
+import AchievementsClient from './AchievementsClient';
 
 export const metadata = {
   title: 'Achievements - Mohamad Dwi Rezky Desyafa',
-  description: 'Certifications, awards, and milestones.',
+  description:
+    'A curated collection of certificates and badges I have earned throughout my professional and academic journey.',
 };
 
+const achievements = [
+  {
+    id: '1',
+    certNumber: '196/EKS/HCLGA/VIII/25',
+    date: 'July 2025',
+    title: 'Backend Developer Internship',
+    issuer: 'Parto.id — Affan Technology Indonesia',
+    type: 'Professional',
+    category: 'Backend',
+    image:
+      'http://localhost:3845/assets/03f6f63944087f53f8f97a547f0ee9364db6241b.png', // From Figma
+  },
+  {
+    id: '2',
+    certNumber: 'IBM/AI/2026',
+    date: 'Aug 2026',
+    title: 'AI Engineer Cohort',
+    issuer: 'Pijak x IBM SkillsBuild',
+    type: 'Academic',
+    category: 'AI/ML',
+    image:
+      'http://localhost:3845/assets/03f6f63944087f53f8f97a547f0ee9364db6241b.png', // Temporary placeholder
+  },
+  {
+    id: '3',
+    certNumber: 'DTS/2023',
+    date: 'Dec 2023',
+    title: 'Baparekraf Digital Talent',
+    issuer: 'Kemenparekraf RI',
+    type: 'Program',
+    category: 'Digital Skill',
+    image:
+      'http://localhost:3845/assets/03f6f63944087f53f8f97a547f0ee9364db6241b.png', // Temporary placeholder
+  },
+];
+
 export default function AchievementsPage() {
-  const achievements = [
-    {
-      title: 'Pijak in collaboration with IBM SkillsBuild - AI Engineer Cohort',
-      date: '2026',
-      description:
-        'Selected to participate in an intensive, industry-focused AI Engineering program to build practical machine learning solutions.',
-    },
-    {
-      title: 'Baparekraf Digital Talent',
-      date: '2023',
-      description:
-        'Successfully completed the government-sponsored digital talent initiative.',
-    },
-  ];
-
-  return (
-    <div className='max-w-3xl flex flex-col gap-10 pb-20'>
-      <div className='flex flex-col gap-2'>
-        <Link
-          href='/'
-          className='inline-flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors w-fit mb-4'
-        >
-          <ArrowLeft className='w-4 h-4' /> Back to Home
-        </Link>
-        <h1 className='text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100'>
-          Achievements
-        </h1>
-        <p className='text-gray-600 dark:text-gray-400'>
-          Certifications, awards, and notable milestones from my journey.
-        </p>
-      </div>
-
-      <div className='flex flex-col gap-6 mt-4'>
-        {achievements.map((item, index) => (
-          <div
-            key={index}
-            className='flex gap-4 p-5 rounded-xl border border-gray-100 dark:border-gray-800/60 bg-white/50 dark:bg-black/20'
-          >
-            <div className='mt-1'>
-              <Trophy className='w-5 h-5 text-gray-400 dark:text-gray-500' />
-            </div>
-            <div className='flex w-full flex-col gap-1.5'>
-              <div className='flex justify-between items-start'>
-                <h3 className='font-bold text-gray-900 dark:text-gray-100'>
-                  {item.title}
-                </h3>
-                <span className='text-xs font-mono font-medium text-gray-500'>
-                  {item.date}
-                </span>
-              </div>
-              <p className='text-sm text-gray-600 dark:text-gray-400'>
-                {item.description}
-              </p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+  return <AchievementsClient achievements={achievements} />;
 }
