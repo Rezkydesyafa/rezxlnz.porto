@@ -31,7 +31,7 @@ export default function AchievementModal({
       >
         {/* Left Side: Image Content */}
         <div className='w-full md:w-[60%] p-6 md:p-10 shrink-0 bg-gray-50 dark:bg-zinc-900/50 flex items-center justify-center flex-col'>
-          <div className='w-full aspect-16/10 sm:aspect-[4/3] md:aspect-auto md:h-[400px] lg:h-[480px] bg-gray-200 dark:bg-zinc-800 rounded-xl overflow-hidden relative shadow-sm'>
+          <div className='w-full aspect-16/10 sm:aspect-4/3 md:aspect-auto md:h-[400px] lg:h-[480px] bg-gray-200 dark:bg-zinc-800 rounded-xl overflow-hidden relative shadow-sm'>
             {achievement.image ? (
               <img
                 src={achievement.image}

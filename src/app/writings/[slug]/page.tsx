@@ -1,7 +1,7 @@
 import { getWritings, readMDXFile } from '@/lib/mdx';
 import path from 'path';
 import Link from 'next/link';
-import { ArrowLeft, Twitter, Linkedin, Link as LinkIcon } from 'lucide-react';
+import { ArrowLeft, Link as LinkIcon } from 'lucide-react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
 export async function generateStaticParams() {
@@ -60,6 +60,20 @@ export default async function WritingPage({
   const { metadata, content } = readMDXFile(filePath);
   const headings = extractHeadings(content);
 
+  const allWritings = getWritings().sort((a, b) => {
+    return (
+      new Date(b.metadata.date || '').getTime() -
+      new Date(a.metadata.date || '').getTime()
+    );
+  });
+
+  const currentIndex = allWritings.findIndex((w) => w.slug === slug);
+  const previousPost =
+    currentIndex < allWritings.length - 1
+      ? allWritings[currentIndex + 1]
+      : null;
+  const nextPost = currentIndex > 0 ? allWritings[currentIndex - 1] : null;
+
   // Helper to get text from nested MDX children
   const stringifyChildren = (children: any): string => {
     if (typeof children === 'string') return children;
@@ -100,20 +114,20 @@ export default async function WritingPage({
             href='/writings'
             className='inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors w-fit mb-4'
           >
-            <ArrowLeft className='w-3 h-3' /> Back to Home
+            <ArrowLeft className='w-3 h-3' /> Back to Writings
           </Link>
           <div className='flex flex-col gap-6 items-start'>
             {/* Date */}
-            <time className='text-[10px] font-mono tracking-[0.1em] uppercase text-gray-400 dark:text-gray-500'>
+            <time className='text-[10px] font-mono tracking-widest uppercase text-gray-400 dark:text-gray-500'>
               {formatDate(metadata.date || '')}
             </time>
             {/* Title */}
-            <h1 className='text-3xl md:text-[42px] font-bold tracking-tight text-gray-900 dark:text-gray-50 leading-[1.1] max-w-2xl'>
+            <h1 className='text-2xl md:text-[32px] font-bold tracking-tight text-gray-900 dark:text-gray-50 leading-[1.1] max-w-2xl'>
               {metadata.title}
             </h1>
             {/* Description / Lead */}
             {metadata.description && (
-              <p className='text-lg md:text-xl text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-2xl mt-2'>
+              <p className='text md:text-md text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-2xl mt-2'>
                 {metadata.description}
               </p>
             )}
@@ -125,15 +139,66 @@ export default async function WritingPage({
         <div
           className='prose prose-zinc dark:prose-invert max-w-none 
           prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-gray-100
-          prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6
-          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
-          prose-p:text-[15px] prose-p:leading-relaxed prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:mb-6
+          prose-h2:text-xl prose-h2:mt-12 prose-h2:mb-6
+          prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-4
+          prose-p:text-[14px] prose-p:leading-relaxed prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:mb-5
           prose-a:text-gray-900 dark:prose-a:text-gray-100 prose-a:underline-offset-4 prose-a:decoration-1 hover:prose-a:decoration-2
           prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:text-gray-900 dark:prose-code:text-gray-100 prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
           prose-pre:bg-gray-50 dark:prose-pre:bg-[#111] prose-pre:border prose-pre:border-gray-100 dark:prose-pre:border-gray-800 prose-pre:text-sm prose-pre:p-6
           prose-blockquote:border-l-2 prose-blockquote:border-gray-200 dark:prose-blockquote:border-gray-700 prose-blockquote:pl-6 prose-blockquote:font-normal prose-blockquote:text-gray-500 dark:prose-blockquote:text-gray-400 prose-blockquote:italic'
         >
           <MDXRemote source={content} components={mdxComponents} />
+        </div>
+
+        {/* Article Navigation */}
+        <div className='mt-20 pt-8 border-t border-gray-200 dark:border-gray-800 grid grid-cols-1 sm:grid-cols-2 gap-8'>
+          {previousPost ? (
+            <Link
+              href={`/writings/${previousPost.slug}`}
+              className='flex flex-col gap-2 group text-left'
+            >
+              <span className='text-[10px] font-mono tracking-widest uppercase text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors'>
+                &larr; Previous Post
+              </span>
+              <span className='font-semibold text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors'>
+                {previousPost.metadata.title}
+              </span>
+            </Link>
+          ) : (
+            <div></div>
+          )}
+
+          {nextPost ? (
+            <Link
+              href={`/writings/${nextPost.slug}`}
+              className='flex flex-col gap-2 group sm:text-right'
+            >
+              <span className='text-[10px] font-mono tracking-widest uppercase text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors'>
+                Next Post &rarr;
+              </span>
+              <span className='font-semibold text-gray-900 dark:text-gray-100 group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors'>
+                {nextPost.metadata.title}
+              </span>
+            </Link>
+          ) : (
+            <div></div>
+          )}
+        </div>
+
+        {/* Comments Section (Coming Soon Placeholder) */}
+        <div className='mt-20 pt-8 flex flex-col gap-8'>
+          <h2 className='text-lg font-bold text-gray-900 dark:text-gray-100'>
+            Comments
+          </h2>
+
+          <div className='w-full py-12 flex flex-col items-center justify-center gap-2 border border-dashed border-gray-200 dark:border-gray-800 rounded-lg bg-gray-50/50 dark:bg-[#111]/50'>
+            <span className='text-[10px] font-mono tracking-widest uppercase text-gray-400 dark:text-gray-500'>
+              Coming Soon
+            </span>
+            <p className='text-sm text-gray-500 dark:text-gray-400 text-center'>
+              The discussion feature is currently being developed.
+            </p>
+          </div>
         </div>
       </article>
 

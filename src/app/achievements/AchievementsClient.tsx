@@ -18,7 +18,7 @@ function AchievementCard({
       className='cursor-pointer flex flex-col gap-2 p-2.5 rounded-lg border border-gray-200/50 dark:border-gray-800/50 bg-white/50 dark:bg-[#111]/30 w-full transition-all duration-200 hover:border-gray-300 dark:hover:border-gray-700 hover:scale-[1.01] active:scale-[0.99] group'
     >
       {/* Image Container */}
-      <div className='w-full aspect-16/10 bg-gray-100 dark:bg-gray-800 rounded overflow-hidden relative shadow-sm border border-gray-100 dark:border-gray-800 overflow-hidden'>
+      <div className='w-full aspect-16/10 bg-gray-100 dark:bg-gray-800 rounded overflow-hidden relative shadow-sm border border-gray-100 dark:border-gray-800'>
         {achievement.image ? (
           <img
             src={achievement.image}

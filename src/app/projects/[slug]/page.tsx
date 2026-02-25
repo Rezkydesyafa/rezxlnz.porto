@@ -96,7 +96,6 @@ export default async function ProjectPage({
                   {metadata.year || '2024'}
                 </span>
               </div>
-
               <div className='flex flex-col gap-1'>
                 <span className='text-[11px] text-gray-500 dark:text-gray-400 font-light'>
                   Category
@@ -107,7 +106,6 @@ export default async function ProjectPage({
                     'Web App'}
                 </span>
               </div>
-
               <div className='flex flex-col gap-1'>
                 <span className='text-[11px] text-gray-500 dark:text-gray-400 font-light'>
                   Role

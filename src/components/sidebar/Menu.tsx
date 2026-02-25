@@ -41,7 +41,7 @@ export function Menu() {
                 {isActive && (
                   <motion.div
                     layoutId='activeArrow'
-                    className='text-gray-400 dark:text-gray-500 mr-2 flex-shrink-0'
+                    className='text-gray-400 dark:text-gray-500 mr-2 shrink-0'
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   >
                     <CornerDownRight
