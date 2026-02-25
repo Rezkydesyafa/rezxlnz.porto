@@ -1,0 +1,41 @@
+---
+title: 'Real-Time Video Chat: Cracking the Network and Codec Puzzle'
+description: 'An in-depth look at how WebRTC handles packet loss, jitter, and bandwidth estimation to deliver seamless video experiences in low-latency environments.'
+date: '2024-10-24'
+tags: ['Engineering', 'Network', 'WebRTC', 'Systems']
+---
+
+Building real-time communication systems is deceptive. It starts simple: capture a stream, send it over a socket, and play it back. But the internet is a hostile environment. Packets drop, networks congest, and latency spikes unpredictably.
+
+When we set out to build our custom video infrastructure, we quickly realized that standard TCP implementations wouldn't cut it. The retransmission delays are simply too high for live conversation. Enter UDP and the complex world of congestion control.
+
+## The Challenge of Jitter
+
+Jitter is the variation in packet arrival time. In a perfect world, packets arrive exactly `30ms` apart. In reality, one might arrive after `15ms`, and the next after `70ms`.
+
+To handle this, we implemented a dynamic jitter buffer. It artificially delays playout just enough to smooth out the incoming stream without introducing noticeable lag.
+
+```javascript
+// Sample adaptive jitter buffer logic
+function calculateDelay(packetArrivals) {
+  const stdDev = calculateStdDev(packetArrivals);
+  // Target 2 standard deviations for buffer size
+  return Math.min(MAX_DELAY, stdDev * 2);
+}
+```
+
+The trade-off here is classic engineering: buffer too little and you get robotic, choppy audio; buffer too much and you destroy the feeling of "real-time" presence.
+
+## Bandwidth Estimation
+
+Perhaps the most critical component is Google's Congestion Control (GCC) algorithm. It uses packet arrival times to estimate the available bandwidth. If the network is congested, queues build up, and packet delay increases.
+
+We observed that switching codecs dynamically based on this estimation was key.
+
+- **VP8:** Good compatibility, moderate CPU usage.
+- **H.264:** Hardware acceleration available on most devices.
+- **AV1:** Incredible compression, but computationally expensive.
+
+## Conclusion
+
+There is no silver bullet for real-time video. It is a constant balancing act between quality, latency, and reliability. By writing our own SFU (Selective Forwarding Unit) in Go, we gained fine-grained control over these parameters, allowing us to serve high-quality video even on unstable mobile networks.

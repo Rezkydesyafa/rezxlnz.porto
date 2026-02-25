@@ -1,0 +1,31 @@
+---
+title: 'Designing Distributed Systems for Failure'
+description: 'Why assuming things will break is the cornerstone of modern backend architecture, and how to build resilient microservices.'
+date: '2024-09-12'
+tags: ['Architecture', 'Backend', 'Systems']
+---
+
+When transitioning from monolithic to distributed architectures, the most difficult mental shift is embracing failure as a feature, not a bug.
+
+If your system spans multiple servers, regions, and network boundaries, the question isn't _if_ a component will fail, but _when_.
+
+## The Fallacies of Distributed Computing
+
+We often assume the network is reliable, latency is zero, and bandwidth is infinite. Operating under these assumptions in an enterprise environment guarantees downtime.
+
+### Circuit Breakers
+
+Instead of continuously hammering a failing service and cascading the outage, we implement the Circuit Breaker pattern.
+
+```go
+func (c *CircuitBreaker) Execute(req Request) (Response, error) {
+    if c.State == Open {
+        return nil, ErrCircuitOpen
+    }
+    // Attempt request...
+}
+```
+
+## Chaos Engineering
+
+The only way to verify resilience is to introduce failure on purpose. Terminating random EC2 instances during business hours forces teams to prioritize automated recovery.
