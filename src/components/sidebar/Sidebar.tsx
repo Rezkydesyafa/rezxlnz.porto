@@ -20,7 +20,7 @@ export function Sidebar() {
     <aside className='w-[200px] shrink-0 min-h-screen py-8 px-6 ml-6 flex flex-col fixed inset-y-0 left-0 mt-8 '>
       {/* Profile Section */}
       <div className='flex flex-col items-center mb-12'>
-        <div className='mb-6 relative w-20 h-20 rounded-xl border border-gray-200/50 dark:border-gray-800/50 overflow-hidden cursor-pointer'>
+        <div className='mb-6 relative w-20 h-20 rounded-xl border border-gray-200/50 dark:border-gray-800/50 overflow-hidden cursor-pointer no-cursor-invert'>
           <Image
             src='/assets/profile-pictureweb.jpg'
             alt='Profile'

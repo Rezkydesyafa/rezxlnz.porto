@@ -1,28 +1,63 @@
 ---
 title: 'AirLink IoT'
-description: 'A web-based dashboard built to control and monitor a smart IoT fan device in real time.'
-tags: ['IoT', 'React', 'Node.js', 'WebSocket']
-githubUrl: 'https://github.com/rezxlnz/airlink-iot'
-liveUrl: 'https://airlink.example.com'
-year: '2024'
+description: 'AirLink is an IoT-based fan control system that allows users to control an electric fan from a web interface over a local WiFi network.'
+tags: ['IoT', 'React', 'Vite', 'ESP8266', 'ESP32']
+githubUrl: 'https://github.com/Rezkydesyafa/AirLink-web-IoTFan'
+liveUrl: 'https://airlink-xi.vercel.app/'
+image: '/assets/project/airlink-1.png'
+year: '2026'
 category: 'IoT Dashboard'
-role: 'Fullstack Developer'
+role: 'Frontend & IoT Developer'
 ---
 
 ## Overview
 
-AirLink IoT is a comprehensive dashboard designed to provide real-time control and monitoring capabilities for a smart fan. This project bridges the gap between physical hardware and web interfaces using modern technologies like WebSockets for low-latency communication.
+**AirLink** is a local IoT-based system to remotely control an electric fan via a web interface over WiFi. It integrates a React web app with an ESP microcontroller (ESP8266/ESP32) and a relay module. Everything runs entirely within a local network using IP-based HTTP communication, ensuring ultra-low latency and maximum privacy.
 
-### Features
+![AirLink Dashboard View 1](/assets/project/airlink-1.png)
 
-- Real-time temperature and humidity monitoring
-- Remote control of fan speed and oscillation
-- Historical data visualization using Recharts
+## Core Architecture
 
-### Architecture
+1. **Hardware Setup**: An ESP microcontroller connects to the local WiFi and acts as a local web server to control a relay switch connected to the fan.
+2. **Web Control**: A React-based web dashboard sends simple HTTP requests to the ESP's IP address to trigger the relay.
 
-The backend is powered by a Node.js server interacting with the IoT device via MQTT, while the frontend communicates to the server using highly-optimized React components and WebSockets.
+## Key Components & Technologies
 
-### Challenges
+- **Frontend**: React, Vite, Tailwind CSS
+- **Hardware**: ESP8266/ESP32, 1-Channel Relay Module, Electric Fan
+- **Communication Protocol**: Local HTTP Requests
 
-One of the main challenges was ensuring consistent, low-latency communication between the web client and the physical fan over an unstable network. We resolved this by implementing custom reconnection logic in the WebSocket layer.
+## Controlling the Device
+
+The ESP exposes endpoints to trigger the relay. The React app fetches these endpoints based on user interaction:
+
+```javascript
+// Example of turning the fan ON
+fetch('http://192.168.1.10/on');
+```
+
+```cpp
+// ESP C++ code to trigger the relay
+digitalWrite(RELAY_PIN, HIGH);
+```
+
+![AirLink Dashboard View 2](/assets/project/airlink-2.png)
+
+## Installation & Setup
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/Rezkydesyafa/AirLink-web-IoTFan.git
+   cd AirLink-web-IoTFan
+   ```
+
+2. **Install dependencies and run:**
+
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+3. **Access the Web Dashboard:**
+   Open `http://localhost:5173` in your browser.

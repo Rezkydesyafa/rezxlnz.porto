@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ArrowRight,
   CornerDownRight,
@@ -63,7 +64,16 @@ export default function ProjectsLayout({ projects }: { projects: any[] }) {
               className='group flex flex-col gap-1.5'
             >
               <Link href={`/projects/${project.slug}`} className='w-full'>
-                <div className='w-full aspect-video bg-gray-200 dark:bg-gray-800 rounded-md mb-2 overflow-hidden transition-colors group-hover:bg-gray-300 dark:group-hover:bg-gray-700' />
+                <div className='w-full aspect-video bg-gray-200 dark:bg-gray-800 rounded-md mb-2 overflow-hidden transition-colors group-hover:bg-gray-300 dark:group-hover:bg-gray-700 relative'>
+                  {project.metadata.image && (
+                    <Image
+                      src={project.metadata.image}
+                      alt={project.metadata.title}
+                      fill
+                      className='object-fill'
+                    />
+                  )}
+                </div>
               </Link>
               <Link href={`/projects/${project.slug}`}>
                 <h2 className='font-semibold text-sm text-gray-900 dark:text-gray-100 group-hover:text-black dark:group-hover:text-white transition-colors duration-300'>

@@ -7,6 +7,7 @@ export default function CustomCursor() {
   const [mounted, setMounted] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isNoInvert, setIsNoInvert] = useState(false);
 
   // Use MotionValues instead of React state to avoid expensive re-renders on mouse move
   const cursorX = useMotionValue(-100);
@@ -50,7 +51,9 @@ export default function CustomCursor() {
       const isClickable = target.closest(
         'a, button, input, select, textarea, [role="button"], .cursor-pointer',
       );
+      const isNoInvertElement = target.closest('.no-cursor-invert');
       setIsHovering(!!isClickable);
+      setIsNoInvert(!!isNoInvertElement);
     };
 
     const handleMouseLeave = () => {
@@ -99,7 +102,7 @@ export default function CustomCursor() {
       />
 
       <motion.div
-        className='fixed top-0 left-0 w-8 h-8 border border-gray-400 dark:border-gray-500 rounded-full pointer-events-none z-9998 mix-blend-difference'
+        className={`fixed top-0 left-0 w-8 h-8 border border-gray-400 dark:border-gray-500 rounded-full pointer-events-none z-9998 ${isNoInvert ? '' : 'mix-blend-difference'}`}
         style={{
           x: cursorXSpringOuter,
           y: cursorYSpringOuter,
