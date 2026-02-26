@@ -10,6 +10,9 @@ const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
 });
 
+import { ThemeProvider } from '@/components/ThemeProvider';
+import ClientCursor from '@/components/ui/ClientCursor';
+
 export const metadata: Metadata = {
   title: 'Mohamad Dwi Rezky Desyafa - Portfolio',
   description: 'Backend & AI Engineer Portfolio',
@@ -21,16 +24,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className='scroll-smooth'>
+    <html lang='en' className='scroll-smooth' suppressHydrationWarning>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased text-gray-900 bg-white dark:bg-[#0a0a0a] dark:text-gray-100 flex min-h-screen`}
       >
-        <LangProvider>
-          <Sidebar />
-          <main className='flex-1 ml-[250px] p-8 md:p-12 lg:p-16'>
-            {children}
-          </main>
-        </LangProvider>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ClientCursor />
+          <LangProvider>
+            <Sidebar />
+            <main className='flex-1 ml-[250px] p-8 md:p-12 lg:p-16'>
+              {children}
+            </main>
+          </LangProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

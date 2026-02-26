@@ -3,7 +3,7 @@
 import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
-import { experience, projects, stack, writings } from '@/data/home';
+import { stack } from '@/data/home';
 import { useLang } from '@/context/LangContext';
 
 const containerVariants: any = {
@@ -121,7 +121,7 @@ export default function Home() {
         </h2>
 
         <div className='relative border-l-2 border-gray-200 dark:border-gray-800 ml-3 flex flex-col gap-8'>
-          {experience.map((exp, i) => (
+          {t.home.experienceList.map((exp, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
@@ -131,7 +131,7 @@ export default function Home() {
             >
               {/* Timeline dot */}
               <div
-                className={`absolute left-[-9px] top-1.5 w-4 h-4 rounded-full border-2 border-white dark:border-[#0a0a0a] transition-colors duration-300 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${exp.status === 'Present' ? 'bg-gray-900 dark:bg-gray-100 group-hover:bg-gray-700 dark:group-hover:bg-white' : 'bg-gray-300 dark:bg-gray-700 group-hover:bg-gray-400 dark:group-hover:bg-gray-600'}`}
+                className={`absolute left-[-9px] top-1.5 w-4 h-4 rounded-full border-2 border-white dark:border-[#0a0a0a] transition-colors duration-300 group-hover:border-gray-300 dark:group-hover:border-gray-500 ${exp.status === t.home.present ? 'bg-gray-900 dark:bg-gray-100 group-hover:bg-gray-700 dark:group-hover:bg-white' : 'bg-gray-300 dark:bg-gray-700 group-hover:bg-gray-400 dark:group-hover:bg-gray-600'}`}
               />
 
               <div className='flex flex-col sm:flex-row sm:items-baseline justify-between mb-2'>
@@ -139,7 +139,7 @@ export default function Home() {
                   <h3 className='font-semibold text-sm text-gray-900 dark:text-gray-100'>
                     {exp.company}
                   </h3>
-                  {exp.status === 'Present' && (
+                  {exp.status === t.home.present && (
                     <span className='px-2 py-0.5 rounded-full bg-gray-900 dark:bg-gray-100 text-white dark:text-black text-[10px] font-bold tracking-wider uppercase'>
                       {t.home.present}
                     </span>
@@ -214,7 +214,7 @@ export default function Home() {
         </h2>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8'>
-          {projects.map((project, i) => (
+          {t.home.projectList.map((project, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
@@ -222,7 +222,7 @@ export default function Home() {
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
               className='group flex flex-col gap-2 p-5 -m-5 rounded-xl hover:bg-gray-50/50 dark:hover:bg-gray-900/20 transition-colors'
             >
-              <h3 className='font-bold text-sm text-gray-900 dark:text-gray-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors'>
+              <h3 className='font-bold text-sm text-gray-900 dark:text-gray-100 group-hover:text-black dark:group-hover:text-white transition-colors duration-300'>
                 {project.title}
               </h3>
               <p className='text-xs text-gray-600 dark:text-gray-400 leading-relaxed flex-1'>
@@ -258,32 +258,39 @@ export default function Home() {
           {t.home.writings}
         </h2>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
-          {writings.map((writing, i) => (
-            <motion.article
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4'>
+          {t.home.writingList.map((writing, i) => (
+            <motion.div
               key={i}
               variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.02, y: -2 }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-              className='group flex flex-col gap-4 p-5 rounded-xl border border-gray-100 dark:border-gray-800/60 bg-white/50 dark:bg-black/20 hover:bg-white dark:hover:bg-gray-900/60 hover:shadow-sm transition-all cursor-pointer'
             >
-              <time className='text-[10px] font-medium text-gray-500 uppercase tracking-widest'>
-                {writing.date}
-              </time>
-              <h3 className='font-bold text-sm text-gray-900 dark:text-gray-100 whitespace-pre-line leading-tight'>
-                {writing.title}
-              </h3>
-              <div className='flex flex-wrap gap-1.5 mt-auto pt-2'>
-                {writing.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className='px-2 py-0.5 rounded border border-gray-200/50 dark:border-gray-700/50 bg-gray-50 dark:bg-gray-800/50 text-[10px] font-medium text-gray-600 dark:text-gray-400'
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </motion.article>
+              <Link
+                href={writing.link}
+                className='group flex flex-col gap-3 p-4 -m-4 rounded-xl hover:bg-gray-50/50 dark:hover:bg-gray-900/20 transition-all duration-300'
+              >
+                <div className='flex items-center justify-between'>
+                  <time className='text-[10px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest'>
+                    {writing.date}
+                  </time>
+                  <ArrowRight className='w-3 h-3 text-gray-400 -rotate-45 opacity-0 -translate-y-1 translate-x-1 group-hover:translate-y-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300' />
+                </div>
+                <h3 className='font-bold text-sm text-gray-900 dark:text-gray-100 group-hover:text-black dark:group-hover:text-white transition-colors duration-300 leading-relaxed whitespace-pre-line'>
+                  {writing.title}
+                </h3>
+                <div className='flex flex-wrap gap-1.5 mt-auto pt-1'>
+                  {writing.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className='text-[9px] font-medium text-gray-500 dark:text-gray-400 border border-gray-200/50 dark:border-gray-800 rounded px-1.5 py-0.5'
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
 

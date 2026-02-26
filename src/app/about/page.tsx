@@ -163,37 +163,29 @@ export default function AboutPage() {
               <div className='flex-1'>{t.about.company_header}</div>
             </div>
 
-            <div className='flex flex-col md:flex-row md:items-center gap-1 md:gap-0 group'>
-              <div className='w-28 md:w-32 lg:w-40 shrink-0 text-[11px] font-mono text-gray-500'>
-                Feb 2026 - Present
-              </div>
-              <div className='w-36 md:w-44 xl:w-52 shrink-0 font-medium text-gray-900 dark:text-gray-100'>
-                AI Engineer Cohort
-              </div>
-              <a
-                href='#'
-                className='flex-1 flex items-center justify-between md:justify-start gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors font-light'
+            {t.home.experienceList.map((exp, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ x: 6 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                className='flex flex-col md:flex-row md:items-center gap-1 md:gap-0 group'
               >
-                <span>Pijak in collaboration with IBM SkillsBuild</span>
-                <ArrowRight className='w-3 h-3 -rotate-45 opacity-50 group-hover:opacity-100 transition-opacity' />
-              </a>
-            </div>
-
-            <div className='flex flex-col md:flex-row md:items-center gap-1 md:gap-0 group'>
-              <div className='w-28 md:w-32 lg:w-40 shrink-0 text-[11px] font-mono text-gray-500'>
-                Sept 2024 - Jan 2025
-              </div>
-              <div className='w-36 md:w-44 xl:w-52 shrink-0 font-medium text-gray-900 dark:text-gray-100'>
-                Baparekraf Digital Talent
-              </div>
-              <a
-                href='#'
-                className='flex-1 flex items-center justify-between md:justify-start gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 transition-colors font-light'
-              >
-                <span>Baparekraf Digital Talent 2023</span>
-                <ArrowRight className='w-3 h-3 -rotate-45 opacity-50 group-hover:opacity-100 transition-opacity' />
-              </a>
-            </div>
+                <div className='w-28 md:w-32 lg:w-40 shrink-0 text-[11px] font-mono text-gray-500'>
+                  {exp.date}
+                  {exp.status === t.home.present ? ` - ${t.home.present}` : ''}
+                </div>
+                <div className='w-36 md:w-44 xl:w-52 shrink-0 font-medium text-gray-900 dark:text-gray-100'>
+                  {exp.role}
+                </div>
+                <a
+                  href='#'
+                  className='flex-1 flex items-center justify-between md:justify-start gap-2 text-gray-600 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors duration-300 font-light'
+                >
+                  <span>{exp.company}</span>
+                  <ArrowRight className='w-3 h-3 -rotate-45 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300' />
+                </a>
+              </motion.div>
+            ))}
           </div>
         </motion.section>
 
@@ -206,45 +198,28 @@ export default function AboutPage() {
             {t.about.honors}
           </h2>
           <ul className='flex flex-col gap-3 text-xs text-gray-600 dark:text-gray-400'>
-            <li className='flex gap-2 items-start group'>
-              <span className='text-gray-300 dark:text-gray-600'>•</span>
-              <div className='flex-1 font-light'>
-                Graduated with Distinction (Top 10%) from the{' '}
-                <a
-                  href='#'
-                  className='inline-flex items-center gap-1 font-medium text-gray-900 dark:text-gray-100 hover:underline decoration-gray-300 dark:decoration-gray-700 underline-offset-4'
-                >
-                  Bangkit Machine Learning Path
-                  <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
-                </a>
-              </div>
-            </li>
-            <li className='flex gap-2 items-start group'>
-              <span className='text-gray-300 dark:text-gray-600'>•</span>
-              <div className='flex-1 font-light'>
-                Microsoft PL-300{' '}
-                <a
-                  href='#'
-                  className='inline-flex items-center gap-1 font-medium text-gray-900 dark:text-gray-100 hover:underline decoration-gray-300 dark:decoration-gray-700 underline-offset-4'
-                >
-                  PowerBI Data Analyst
-                  <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
-                </a>
-              </div>
-            </li>
-            <li className='flex gap-2 items-start group'>
-              <span className='text-gray-300 dark:text-gray-600'>•</span>
-              <div className='flex-1 font-light'>
-                Finalist of{' '}
-                <a
-                  href='#'
-                  className='inline-flex items-center gap-1 font-medium text-gray-900 dark:text-gray-100 hover:underline decoration-gray-300 dark:decoration-gray-700 underline-offset-4'
-                >
-                  Hology Competitive Programming
-                  <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
-                </a>
-              </div>
-            </li>
+            {t.about.honorsList.map((honor, i) => (
+              <motion.li
+                key={i}
+                whileHover={{ x: 4 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                className='flex gap-2 items-start group'
+              >
+                <span className='text-gray-300 dark:text-gray-600 group-hover:text-black dark:group-hover:text-white transition-colors duration-300'>
+                  •
+                </span>
+                <div className='flex-1 font-light'>
+                  {honor.title}{' '}
+                  <a
+                    href={honor.linkUrl}
+                    className='inline-flex items-center gap-1 font-medium text-gray-900 dark:text-gray-100 hover:text-black dark:hover:text-white hover:underline decoration-gray-300 dark:decoration-gray-700 underline-offset-4 transition-colors duration-300'
+                  >
+                    {honor.linkText}
+                    <ArrowRight className='w-2.5 h-2.5 -rotate-45 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300' />
+                  </a>
+                </div>
+              </motion.li>
+            ))}
           </ul>
         </motion.section>
 
@@ -257,46 +232,51 @@ export default function AboutPage() {
             {t.about.online_presence}
           </h2>
           <div className='flex flex-wrap items-center gap-2.5 text-xs text-gray-500 dark:text-gray-400'>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
               href='https://linkedin.com'
               target='_blank'
               rel='noreferrer'
-              className='inline-flex items-center gap-1 hover:text-gray-900 dark:hover:text-gray-100 transition-colors'
+              className='inline-flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors duration-300'
             >
               LinkedIn <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
-            </a>
+            </motion.a>
             <span>/</span>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
               href='https://github.com'
               target='_blank'
               rel='noreferrer'
-              className='inline-flex items-center gap-1 hover:text-gray-900 dark:hover:text-gray-100 transition-colors'
+              className='inline-flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors duration-300'
             >
               GitHub <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
-            </a>
+            </motion.a>
             <span>/</span>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
               href='https://twitter.com'
               target='_blank'
               rel='noreferrer'
-              className='inline-flex items-center gap-1 hover:text-gray-900 dark:hover:text-gray-100 transition-colors'
+              className='inline-flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors duration-300'
             >
               Twitter <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
-            </a>
+            </motion.a>
             <span>/</span>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
               href='mailto:email@example.com'
-              className='inline-flex items-center gap-1 hover:text-gray-900 dark:hover:text-gray-100 transition-colors'
+              className='inline-flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors duration-300'
             >
               Mail <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
-            </a>
+            </motion.a>
             <span>/</span>
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
               href='#'
-              className='inline-flex items-center gap-1 hover:text-gray-900 dark:hover:text-gray-100 transition-colors'
+              className='inline-flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors duration-300'
             >
               Credly <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
-            </a>
+            </motion.a>
           </div>
         </motion.section>
       </div>
@@ -336,10 +316,10 @@ export default function AboutPage() {
               href='https://github.com'
               target='_blank'
               rel='noreferrer'
-              className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+              className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
             >
               <span>GitHub</span>
-              <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+              <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                 ↗
               </span>
             </a>
@@ -347,10 +327,10 @@ export default function AboutPage() {
               href='https://linkedin.com'
               target='_blank'
               rel='noreferrer'
-              className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+              className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
             >
               <span>LinkedIn</span>
-              <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+              <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                 ↗
               </span>
             </a>
@@ -358,19 +338,19 @@ export default function AboutPage() {
               href='https://twitter.com'
               target='_blank'
               rel='noreferrer'
-              className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+              className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
             >
               <span>Twitter</span>
-              <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+              <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                 ↗
               </span>
             </a>
             <a
               href='mailto:email@example.com'
-              className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+              className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
             >
               <span>Email</span>
-              <span className='w-4 flex justify-center font-mono text-gray-400 opacity-50 group-hover:opacity-100 transition-opacity'>
+              <span className='w-4 flex justify-center font-mono text-gray-400 opacity-50 group-hover:opacity-100 transition-all duration-300'>
                 @
               </span>
             </a>

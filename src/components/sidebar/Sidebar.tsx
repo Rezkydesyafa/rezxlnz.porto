@@ -2,19 +2,31 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { Menu } from '@/components/sidebar/Menu';
 import { useLang } from '@/context/LangContext';
 
+const ThemeToggle = dynamic(() => import('@/components/ui/ThemeToggle'), {
+  ssr: false,
+  loading: () => (
+    <div className='w-[72px] h-9 rounded-full bg-gray-100 dark:bg-[#151515] border border-gray-200/60 dark:border-gray-800/60 shadow-inner' />
+  ),
+});
+
 export function Sidebar() {
-  const { locale, setLocale, t } = useLang();
+  const { t } = useLang();
 
   return (
-    <aside className='w-[200px] shrink-0 min-h-screen py-8 px-6 ml-6 flex flex-col fixed inset-y-0 left-0'>
+    <aside className='w-[200px] shrink-0 min-h-screen py-8 px-6 ml-6 flex flex-col fixed inset-y-0 left-0 mt-8 '>
       {/* Profile Section */}
       <div className='flex flex-col items-center mb-12'>
-        <div className='mb-6 relative w-20 h-20 rounded-xl border border-gray-200/50 dark:border-gray-800/50 overflow-hidden'>
-          {/* Placeholder for Profile Image */}
-          <div className='absolute inset-0 bg-gray-100 dark:bg-gray-800 mix-blend-saturation' />
+        <div className='mb-6 relative w-20 h-20 rounded-xl border border-gray-200/50 dark:border-gray-800/50 overflow-hidden cursor-pointer'>
+          <Image
+            src='/assets/profile-pictureweb.jpg'
+            alt='Profile'
+            fill
+            className='object-cover grayscale hover:grayscale-0 transition-all duration-300'
+          />
         </div>
 
         {/* Available for hire text */}
@@ -34,25 +46,15 @@ export function Sidebar() {
         <Menu />
 
         {/* Footer Info */}
-        <div className='flex flex-col gap-2 mt-12'>
+        <div className='flex flex-col gap-2 mb-8'>
           <div className='flex items-center gap-3 text-xs font-mono font-bold tracking-wider'>
-            <button
-              onClick={() => setLocale('id')}
-              className={`uppercase transition-colors ${locale === 'id' ? 'text-gray-900 dark:text-gray-100' : 'text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'}`}
-            >
-              ID
-            </button>
-            <button
-              onClick={() => setLocale('en')}
-              className={`uppercase transition-colors ${locale === 'en' ? 'text-gray-900 dark:text-gray-100' : 'text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'}`}
-            >
-              ENG
-            </button>
+            {/* Dark Mode Toggle Switch */}
+            <ThemeToggle />
           </div>
 
           <div className='flex flex-col gap-1 mt-4 text-[10px] uppercase font-mono text-gray-400 dark:text-gray-500'>
             <span>@rezxlnz</span>
-            <span>Jakarta, WIB (UTC+7)</span>
+            <span>Yogyakarta, WIB (UTC+7)</span>
           </div>
         </div>
       </div>

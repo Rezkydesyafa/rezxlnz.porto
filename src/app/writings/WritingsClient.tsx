@@ -4,12 +4,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { PenTool, Hash, Filter, ChevronDown, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLang } from '@/context/LangContext';
 
 export default function WritingsClient({
   initialWritings,
 }: {
   initialWritings: any[];
 }) {
+  const { t } = useLang();
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
@@ -54,10 +56,10 @@ export default function WritingsClient({
         {/* Header Section */}
         <div className='flex flex-col gap-2'>
           <h1 className='text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50'>
-            Writing
+            {t.writingsPage.title}
           </h1>
           <p className='text-xs font-light text-gray-500 dark:text-gray-400 leading-relaxed'>
-            Selected works and experiments.
+            {t.writingsPage.subtitle}
           </p>
         </div>
 
@@ -65,10 +67,12 @@ export default function WritingsClient({
         <div className='flex flex-col mt-4 border-b border-gray-100 dark:border-gray-800/60'>
           {displayedWritings.length > 0 ? (
             displayedWritings.map((writing) => (
-              <Link
+              <motion.a
                 key={writing.slug}
                 href={`/writings/${writing.slug}`}
-                className='group flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-12 py-5 sm:py-6 border-t border-gray-100 dark:border-gray-800/60 transition-colors hover:bg-gray-50/50 dark:hover:bg-white/[0.02]'
+                whileHover={{ x: 4 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+                className='group flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-12 py-5 sm:py-6 border-t border-gray-100 dark:border-gray-800/60 transition-colors hover:bg-gray-50/50 dark:hover:bg-white/2'
               >
                 <div className='w-32 shrink-0'>
                   <time className='text-[10px] sm:text-[11px] font-mono uppercase tracking-widest text-gray-400 dark:text-gray-500'>
@@ -80,11 +84,11 @@ export default function WritingsClient({
                     {writing.metadata.title}
                   </h2>
                 </div>
-              </Link>
+              </motion.a>
             ))
           ) : (
             <div className='py-8 text-sm text-gray-500 text-center border-t border-gray-100 dark:border-gray-800/60'>
-              No writings found for the selected tag.
+              {t.writingsPage.no_writings}
             </div>
           )}
         </div>
@@ -104,7 +108,7 @@ export default function WritingsClient({
           {/* Sorting Control */}
           <div className='flex flex-col gap-3 items-end'>
             <h3 className='text-[10px] font-mono tracking-widest uppercase text-gray-400 dark:text-gray-500 flex items-center gap-1.5'>
-              Sort By <Filter className='w-3 h-3' />
+              {t.writingsPage.sort_by} <Filter className='w-3 h-3' />
             </h3>
             <div className='relative min-w-[120px] z-20'>
               <button
@@ -142,7 +146,7 @@ export default function WritingsClient({
                             : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-zinc-900 hover:text-gray-800 dark:hover:text-gray-200'
                         }`}
                       >
-                        Newest
+                        {t.writingsPage.newest}
                       </button>
                       <button
                         onClick={() => {
@@ -155,7 +159,7 @@ export default function WritingsClient({
                             : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-zinc-900 hover:text-gray-800 dark:hover:text-gray-200'
                         }`}
                       >
-                        Oldest
+                        {t.writingsPage.oldest}
                       </button>
                     </motion.div>
                   </>
@@ -168,18 +172,18 @@ export default function WritingsClient({
           {allTags.length > 0 && (
             <div className='flex flex-col gap-3 items-end mt-4'>
               <h3 className='text-[10px] font-mono tracking-widest uppercase text-gray-400 dark:text-gray-500 flex items-center gap-1.5'>
-                Topics <Hash className='w-3 h-3' />
+                {t.writingsPage.topics} <Hash className='w-3 h-3' />
               </h3>
               <nav className='flex flex-col gap-2.5 text-xs text-right'>
                 <button
                   onClick={() => setSelectedTag(null)}
-                  className={`flex items-center justify-end gap-2 group transition-colors ${
+                  className={`flex items-center justify-end gap-2 group transition-colors duration-300 ${
                     selectedTag === null
-                      ? 'text-gray-900 dark:text-gray-100 font-medium'
-                      : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100'
+                      ? 'text-black dark:text-white font-medium'
+                      : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'
                   }`}
                 >
-                  <span>All Writing</span>
+                  <span>{t.writingsPage.all_writing}</span>
                   <span className='w-3 flex justify-center text-[10px] opacity-50 group-hover:opacity-100 transition-opacity'>
                     {selectedTag === null ? '•' : ''}
                   </span>
@@ -188,10 +192,10 @@ export default function WritingsClient({
                   <button
                     key={tag}
                     onClick={() => setSelectedTag(tag)}
-                    className={`flex items-center justify-end gap-2 group transition-colors ${
+                    className={`flex items-center justify-end gap-2 group transition-colors duration-300 ${
                       selectedTag === tag
-                        ? 'text-gray-900 dark:text-gray-100 font-medium'
-                        : 'text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100'
+                        ? 'text-black dark:text-white font-medium'
+                        : 'text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white'
                     }`}
                   >
                     <span>{tag}</span>

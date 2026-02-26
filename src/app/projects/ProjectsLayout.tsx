@@ -66,11 +66,11 @@ export default function ProjectsLayout({ projects }: { projects: any[] }) {
                 <div className='w-full aspect-video bg-gray-200 dark:bg-gray-800 rounded-md mb-2 overflow-hidden transition-colors group-hover:bg-gray-300 dark:group-hover:bg-gray-700' />
               </Link>
               <Link href={`/projects/${project.slug}`}>
-                <h2 className='font-semibold text-sm text-gray-900 dark:text-gray-100 transition-colors'>
+                <h2 className='font-semibold text-sm text-gray-900 dark:text-gray-100 group-hover:text-black dark:group-hover:text-white transition-colors duration-300'>
                   {project.metadata.title}
                 </h2>
               </Link>
-              <p className='text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed flex-1'>
+              <p className='text-[11px] text-gray-500 dark:text-gray-400 group-hover:text-gray-600 dark:group-hover:text-gray-300 leading-relaxed flex-1 transition-colors duration-300'>
                 {project.metadata.description}
               </p>
               <div className='flex flex-wrap gap-1 mt-0.5'>
@@ -85,14 +85,14 @@ export default function ProjectsLayout({ projects }: { projects: any[] }) {
               </div>
               <Link
                 href={`/projects/${project.slug}`}
-                className='inline-flex items-center gap-1.5 text-[11px] font-medium mt-1 hover:text-gray-600 dark:hover:text-gray-300 transition-colors w-fit pt-0.5'
+                className='inline-flex items-center gap-1.5 text-[11px] font-medium mt-1 text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors duration-300 w-fit pt-0.5'
               >
                 <CornerDownRight
-                  className='w-3 h-3 text-gray-400'
+                  className='w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'
                   strokeWidth={1.5}
                 />
-                <span className='underline underline-offset-4 decoration-2 decoration-gray-300 dark:decoration-gray-700 hover:decoration-gray-900 dark:hover:decoration-gray-300 transition-all'>
-                  Details
+                <span className='underline underline-offset-4 decoration-2 decoration-gray-300 dark:decoration-gray-700 group-hover:decoration-black dark:group-hover:decoration-white transition-all duration-300'>
+                  {t.projectsPage.details}
                 </span>
               </Link>
             </motion.div>
@@ -121,29 +121,29 @@ export default function ProjectsLayout({ projects }: { projects: any[] }) {
             <nav className='flex flex-col gap-2.5 text-xs text-right'>
               <a
                 href='#'
-                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
               >
                 <span>Fullstack</span>
                 <span className='w-4 flex justify-center'>
-                  <Terminal className='w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity' />
+                  <Terminal className='w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300' />
                 </span>
               </a>
               <a
                 href='#'
-                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
               >
                 <span>AI Engineering</span>
                 <span className='w-4 flex justify-center'>
-                  <Cpu className='w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity' />
+                  <Cpu className='w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300' />
                 </span>
               </a>
               <a
                 href='#'
-                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
               >
                 <span>Backend</span>
                 <span className='w-4 flex justify-center'>
-                  <Server className='w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity' />
+                  <Server className='w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300' />
                 </span>
               </a>
             </nav>
@@ -156,37 +156,37 @@ export default function ProjectsLayout({ projects }: { projects: any[] }) {
             <nav className='flex flex-col gap-2.5 text-xs text-right'>
               <a
                 href='#'
-                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
               >
                 <span>Next.js</span>
-                <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+                <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                   ↗
                 </span>
               </a>
               <a
                 href='#'
-                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
               >
                 <span>Go</span>
-                <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+                <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                   ↗
                 </span>
               </a>
               <a
                 href='#'
-                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
               >
                 <span>Python</span>
-                <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+                <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                   ↗
                 </span>
               </a>
               <a
                 href='#'
-                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
               >
                 <span>Docker</span>
-                <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+                <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                   ↗
                 </span>
               </a>

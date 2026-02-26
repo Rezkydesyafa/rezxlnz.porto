@@ -15,11 +15,9 @@ export function LangProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>('en');
 
   useEffect(() => {
-    // Read from localStorage on mount
-    const saved = localStorage.getItem('app-lang') as Locale | null;
-    if (saved && (saved === 'en' || saved === 'id')) {
-      setLocaleState(saved);
-    }
+    // Force English as default, ignore localStorage
+    setLocaleState('en');
+    localStorage.setItem('app-lang', 'en');
   }, []);
 
   const setLocale = (newLocale: Locale) => {

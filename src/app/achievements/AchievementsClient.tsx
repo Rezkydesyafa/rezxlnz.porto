@@ -15,7 +15,7 @@ function AchievementCard({
   return (
     <div
       onClick={onClick}
-      className='cursor-pointer flex flex-col gap-2 p-2.5 rounded-lg border border-gray-200/50 dark:border-gray-800/50 bg-white/50 dark:bg-[#111]/30 w-full transition-all duration-200 hover:border-gray-300 dark:hover:border-gray-700 hover:scale-[1.01] active:scale-[0.99] group'
+      className='cursor-pointer flex flex-col gap-2 p-2.5 rounded-lg border border-gray-200/50 dark:border-gray-800/50 bg-white/50 dark:bg-[#111]/30 w-full transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-700 hover:-translate-y-1 hover:shadow-sm active:scale-[0.99] group'
     >
       {/* Image Container */}
       <div className='w-full aspect-16/10 bg-gray-100 dark:bg-gray-800 rounded overflow-hidden relative shadow-sm border border-gray-100 dark:border-gray-800'>
@@ -165,29 +165,29 @@ export default function AchievementsClient({
               <nav className='flex flex-col gap-2.5 text-xs text-right'>
                 <a
                   href='#'
-                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
                 >
                   <span>Professional</span>
                   <span className='w-4 flex justify-center'>
-                    <Medal className='w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity' />
+                    <Medal className='w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300' />
                   </span>
                 </a>
                 <a
                   href='#'
-                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
                 >
                   <span>Academic</span>
                   <span className='w-4 flex justify-center'>
-                    <GraduationCap className='w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity' />
+                    <GraduationCap className='w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300' />
                   </span>
                 </a>
                 <a
                   href='#'
-                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
                 >
                   <span>Competitions</span>
                   <span className='w-4 flex justify-center'>
-                    <Trophy className='w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity' />
+                    <Trophy className='w-3 h-3 opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300' />
                   </span>
                 </a>
               </nav>
@@ -200,37 +200,37 @@ export default function AchievementsClient({
               <nav className='flex flex-col gap-2.5 text-xs text-right'>
                 <a
                   href='#'
-                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
                 >
                   <span>Bangkit</span>
-                  <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+                  <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                     ↗
                   </span>
                 </a>
                 <a
                   href='#'
-                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
                 >
                   <span>IBM</span>
-                  <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+                  <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                     ↗
                   </span>
                 </a>
                 <a
                   href='#'
-                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
                 >
                   <span>Coursera</span>
-                  <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+                  <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                     ↗
                   </span>
                 </a>
                 <a
                   href='#'
-                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100 transition-colors'
+                  className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
                 >
                   <span>Dicoding</span>
-                  <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 transition-opacity'>
+                  <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                     ↗
                   </span>
                 </a>
