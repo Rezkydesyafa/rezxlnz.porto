@@ -4,14 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { PenTool, Hash, Filter, ChevronDown, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useLang } from '@/context/LangContext';
-
+import { dictionary as t } from '@/lib/dictionaries';
 export default function WritingsClient({
   initialWritings,
 }: {
   initialWritings: any[];
 }) {
-  const { t } = useLang();
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
   const [isSortOpen, setIsSortOpen] = useState(false);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);

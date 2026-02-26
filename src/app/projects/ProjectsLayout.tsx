@@ -11,11 +11,8 @@ import {
   Server,
   Folder,
 } from 'lucide-react';
-import { useLang } from '@/context/LangContext';
-
+import { dictionary as t } from '@/lib/dictionaries';
 export default function ProjectsLayout({ projects }: { projects: any[] }) {
-  const { t } = useLang();
-
   const containerVariants: any = {
     hidden: { opacity: 0 },
     show: {

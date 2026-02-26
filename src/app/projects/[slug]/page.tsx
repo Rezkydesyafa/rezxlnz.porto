@@ -3,6 +3,7 @@ import path from 'path';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import { ImageModal } from '@/components/ui/ImageModal';
 
 export async function generateStaticParams() {
   const projects = getProjects();
@@ -14,19 +15,15 @@ export async function generateStaticParams() {
 // Custom MDX Components for rendering within markdown
 const mdxComponents = {
   ImageGrid: ({ children }: { children: React.ReactNode }) => (
-    <div className='grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 my-8 w-full max-w-xl'>
+    <div className='grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 my-8 w-full'>
       {children}
     </div>
   ),
   ProjectImage: ({ src, caption }: { src?: string; caption: string }) => (
     <figure className='flex flex-col gap-2 m-0 w-full'>
-      <div className='aspect-16/10 sm:aspect-square bg-gray-100 dark:bg-gray-800 border border-gray-200/50 dark:border-gray-700/50 rounded-md overflow-hidden w-full'>
+      <div className='relative w-full aspect-video bg-gray-100 dark:bg-gray-800/50 border border-gray-200/50 dark:border-gray-700/50 rounded-md overflow-hidden flex items-center justify-center'>
         {src ? (
-          <img
-            src={src}
-            alt={caption}
-            className='w-full h-full object-cover m-0'
-          />
+          <ImageModal src={src} alt={caption} />
         ) : (
           <div className='w-full h-full' />
         )}

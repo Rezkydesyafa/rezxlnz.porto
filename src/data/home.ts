@@ -44,6 +44,12 @@ export const experience = [
 
 export const projects = [
   {
+    title: 'SRIM - Rekam Medis',
+    description:
+      'Web-based application designed to digitize and streamline administrative processes and clinical data management in healthcare facilities.',
+    link: '/projects/sirm-rekam-medis',
+  },
+  {
     title: 'AirLink IoT',
     description:
       'A web-based dashboard built to control and monitor a smart IoT fan device in real time.',

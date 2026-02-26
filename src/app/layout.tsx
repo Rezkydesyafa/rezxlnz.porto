@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Sidebar } from '@/components/sidebar/Sidebar';
-import { LangProvider } from '@/context/LangContext';
-
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -35,12 +33,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ClientCursor />
-          <LangProvider>
-            <Sidebar />
-            <main className='flex-1 ml-[250px] p-8 md:p-12 lg:p-16'>
-              {children}
-            </main>
-          </LangProvider>
+          <Sidebar />
+          <main className='flex-1 ml-[250px] p-8 md:p-12 lg:p-16'>
+            {children}
+          </main>
         </ThemeProvider>
       </body>
     </html>

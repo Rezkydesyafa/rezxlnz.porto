@@ -1,13 +1,11 @@
 'use client';
 
-import { useLang } from '@/context/LangContext';
+import { dictionary as t } from '@/lib/dictionaries';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 export default function AboutPage() {
-  const { t } = useLang();
-
   const containerVariants: any = {
     hidden: { opacity: 0 },
     show: {

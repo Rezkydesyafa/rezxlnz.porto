@@ -1,0 +1,136 @@
+---
+title: 'SRIM - Rekam Medis'
+date: '2024'
+description: 'Web-based application designed to digitize and streamline administrative processes and clinical data management in healthcare facilities.'
+tags: ['Laravel', 'PHP', 'Tailwind', 'Alpine.js', 'MySQL']
+category: 'Web App'
+role: 'Fullstack Developer'
+githubUrl: 'https://github.com/Rezkydesyafa/PFS-Rekam-Medis'
+image: '/assets/project/sirm-1.png'
+---
+
+## Overview
+
+**Project SIRM** is a web-based application designed to digitize and streamline administrative processes and clinical data management within healthcare facilities. Built with the modern Laravel framework, this system ensures high performance, security, and scalability.
+
+<ImageGrid>
+  <ProjectImage
+    src='/assets/project/sirm-1.png'
+    caption='SIRM Dashboard View'
+  />
+  <ProjectImage
+    src='/assets/project/sirm-2.png'
+    caption='SIRM Patient Management'
+  />
+</ImageGrid>
+
+## Key Features
+
+- **Patient Management:** Efficient recording, searching, and managing of patient data.
+- **Doctor Management:** Management of specialist doctor profiles and practice schedules.
+- **Medicine Inventory:** Monitoring drug stock and managing pharmacy data.
+- **Electronic Medical Records:** Integrated recording of patients' health histories.
+- **Billing System:** Automated generation of treatment invoices.
+- **PDF Report Export:** Print invoices and medical record reports into ready-to-print PDF formats.
+- **Interactive Dashboard:** Summary of healthcare facility statistical data.
+
+<ImageGrid>
+  <ProjectImage
+    src='/assets/project/sirm-4.png'
+    caption='SIRM Medical Record'
+  />
+  <ProjectImage
+    src='/assets/project/sirm-5.png'
+    caption='SIRM Billing & Invoices'
+  />
+</ImageGrid>
+
+## Tech Stack
+
+This application is built using a modern technology stack:
+
+- **Backend Framework:** Laravel 12
+- **Programming Language:** PHP 8.2+
+- **Frontend:** Blade Templates, Tailwind CSS, Alpine.js
+- **Database:** MySQL / MariaDB
+- **PDF Generator:** laravel-dompdf
+- **Build Tool:** Vite
+
+## Installation Guide
+
+Follow these steps to run the project in your local environment:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/Rezkydesyafa/PFS-Rekam-Medis.git
+   cd PFS-Rekam-Medis
+   ```
+
+2. **Install Dependencies:**
+   Ensure Composer and Node.js are installed.
+
+   ```bash
+   composer install
+   npm install
+   ```
+
+3. **Environment Configuration:**
+   Copy the `.env.example` file to `.env` and configure your database settings.
+
+   ```bash
+   cp .env.example .env
+   ```
+
+4. **Generate App Key:**
+
+   ```bash
+   php artisan key:generate
+   ```
+
+5. **Database Migration & Seeding:**
+   Run migrations and seeders to create the database structure with initial data.
+
+   ```bash
+   php artisan migrate --seed
+   ```
+
+6. **Build Frontend Assets:**
+   Compile the CSS and JS files using Vite.
+
+   ```bash
+   npm run build
+   ```
+
+7. **Run the Application:**
+
+   ```bash
+   php artisan serve
+   ```
+
+Access the application via your browser at `http://localhost:8000`.
+
+## Usage Guide
+
+- **Login:** Access the system using admin/staff credentials.
+- **Dashboard:** Monitor patient data summaries and today's visits.
+- **Navigation Menu:** Use the sidebar to access modules (Patients, Doctors, Medicines, etc.).
+- **Print PDF:** On the billing or medical record detail page, click the "Export PDF" button to download official documents.
+
+## Important Folder Structure
+
+Here are some key directories in this project's development:
+
+- `app/Http/Controllers` - Main application logic (Patient, Doctor, Billing Controllers).
+- `app/Models` - Database data representation (Eloquent Models).
+- `resources/views` - User interface (Blade Templates).
+- `routes/web.php` - Application routing definitions.
+- `database/migrations` - Database structure schema.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contributors
+
+Developed by the SIRM Development Team. Open to contributions; feel free to submit Pull Requests or report Issues.

@@ -4,8 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Laptop, Monitor, Terminal } from 'lucide-react';
-import { useLang } from '@/context/LangContext';
-
+import { dictionary as t } from '@/lib/dictionaries';
 const icons = [
   <Monitor className='w-3.5 h-3.5 text-gray-500' key='hardware' />,
   <Terminal className='w-3.5 h-3.5 text-gray-500' key='software' />,
@@ -13,8 +12,6 @@ const icons = [
 ];
 
 export default function UsesClient() {
-  const { t } = useLang();
-
   return (
     <div className='max-w-3xl flex flex-col gap-10 pb-20'>
       <div className='flex flex-col gap-2'>

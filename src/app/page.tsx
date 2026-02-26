@@ -4,8 +4,7 @@ import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { stack } from '@/data/home';
-import { useLang } from '@/context/LangContext';
-
+import { dictionary as t } from '@/lib/dictionaries';
 const containerVariants: any = {
   hidden: { opacity: 0 },
   show: {
@@ -26,8 +25,6 @@ const itemVariants: any = {
 };
 
 export default function Home() {
-  const { t } = useLang();
-
   return (
     <div className='max-w-3xl lg:max-w-4xl flex flex-col gap-20 pb-20'>
       {/* Header Section */}

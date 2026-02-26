@@ -3,13 +3,11 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { useLang } from '@/context/LangContext';
+import { dictionary as t } from '@/lib/dictionaries';
 import { CornerDownRight } from 'lucide-react';
 
 export function Menu() {
   const pathname = usePathname();
-  const { t } = useLang();
-
   const navItems = [
     { name: t.sidebar.home, path: '/' },
     { name: t.sidebar.about, path: '/about' },

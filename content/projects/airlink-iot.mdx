@@ -14,7 +14,16 @@ role: 'Frontend & IoT Developer'
 
 **AirLink** is a local IoT-based system to remotely control an electric fan via a web interface over WiFi. It integrates a React web app with an ESP microcontroller (ESP8266/ESP32) and a relay module. Everything runs entirely within a local network using IP-based HTTP communication, ensuring ultra-low latency and maximum privacy.
 
-![AirLink Dashboard View 1](/assets/project/airlink-1.png)
+<ImageGrid>
+  <ProjectImage
+    src='/assets/project/airlink-1.png'
+    caption='AirLink Dashboard View 1'
+  />
+  <ProjectImage
+    src='/assets/project/airlink-2.png'
+    caption='AirLink Dashboard View 2'
+  />
+</ImageGrid>
 
 ## Core Architecture
 
@@ -40,8 +49,6 @@ fetch('http://192.168.1.10/on');
 // ESP C++ code to trigger the relay
 digitalWrite(RELAY_PIN, HIGH);
 ```
-
-![AirLink Dashboard View 2](/assets/project/airlink-2.png)
 
 ## Installation & Setup
 

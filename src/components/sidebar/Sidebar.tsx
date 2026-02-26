@@ -4,8 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { Menu } from '@/components/sidebar/Menu';
-import { useLang } from '@/context/LangContext';
-
+import { dictionary as t } from '@/lib/dictionaries';
 const ThemeToggle = dynamic(() => import('@/components/ui/ThemeToggle'), {
   ssr: false,
   loading: () => (
@@ -14,8 +13,6 @@ const ThemeToggle = dynamic(() => import('@/components/ui/ThemeToggle'), {
 });
 
 export function Sidebar() {
-  const { t } = useLang();
-
   return (
     <aside className='w-[200px] shrink-0 min-h-screen py-8 px-6 ml-6 flex flex-col fixed inset-y-0 left-0 mt-8 '>
       {/* Profile Section */}
