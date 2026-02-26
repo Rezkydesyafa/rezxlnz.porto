@@ -18,7 +18,7 @@ export default function AchievementModal({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className='absolute inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-sm'
+        className='absolute inset-0 bg-black/60 dark:bg-black/80 '
       />
 
       {/* Modal Content */}
@@ -27,16 +27,16 @@ export default function AchievementModal({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 10 }}
         transition={{ type: 'spring', duration: 0.5, bounce: 0 }}
-        className='relative w-full max-w-[1010px] bg-white dark:bg-[#111] rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]'
+        className='relative w-full max-w-[850px] bg-white dark:bg-[#111] rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[85vh]'
       >
         {/* Left Side: Image Content */}
-        <div className='w-full md:w-[60%] p-6 md:p-10 shrink-0 bg-gray-50 dark:bg-zinc-900/50 flex items-center justify-center flex-col'>
-          <div className='w-full aspect-16/10 sm:aspect-4/3 md:aspect-auto md:h-[400px] lg:h-[480px] bg-gray-200 dark:bg-zinc-800 rounded-xl overflow-hidden relative shadow-sm'>
+        <div className='w-full md:w-[60%] shrink-0 bg-gray-50 dark:bg-zinc-900/50 flex items-center justify-center relative'>
+          <div className='w-full h-full bg-gray-200 dark:bg-zinc-800 flex items-center justify-center overflow-hidden relative shadow-sm'>
             {achievement.image ? (
               <img
                 src={achievement.image}
                 alt={achievement.title}
-                className='w-full h-full object-contain sm:object-cover'
+                className='w-full h-full object-contain'
               />
             ) : (
               <div className='absolute inset-0 flex items-center justify-center text-gray-400 dark:text-gray-600 font-mono text-xs uppercase tracking-widest'>
@@ -47,7 +47,7 @@ export default function AchievementModal({
         </div>
 
         {/* Right Side: Details Content */}
-        <div className='w-full md:w-[40%] flex flex-col p-6 md:py-12 md:pr-10 md:pl-6 overflow-y-auto'>
+        <div className='w-full md:w-[40%] flex flex-col p-5 md:py-8 md:pr-8 md:pl-5 overflow-y-auto'>
           {/* Close Button (Absolute on Top Right of the Modal) */}
           <button
             onClick={onClose}
@@ -57,20 +57,20 @@ export default function AchievementModal({
           </button>
 
           {/* Header Info */}
-          <div className='flex items-center gap-4 mb-5 md:mb-8 text-[11px] font-mono uppercase tracking-[2.5px] text-gray-400 dark:text-gray-500'>
+          <div className='flex items-center gap-3 mb-4 md:mb-6 text-[9px] font-mono uppercase tracking-[2px] text-gray-400 dark:text-gray-500'>
             <span>{achievement.certNumber}</span>
-            <div className='w-px h-3 bg-gray-200 dark:bg-zinc-800' />
+            <div className='w-px h-2.5 bg-gray-200 dark:bg-zinc-800' />
             <span>{achievement.date}</span>
           </div>
 
           {/* Title */}
-          <h2 className='text-3xl md:text-[32px] font-medium text-gray-900 dark:text-gray-50 tracking-[-1.4px] leading-tight mb-6 md:mb-8'>
+          <h2 className='text-2xl md:text-[22px] font-medium text-gray-900 dark:text-gray-50 tracking-tight leading-snug mb-5 max-w-[90%]'>
             {achievement.title}
           </h2>
 
-          <div className='flex flex-col gap-6 md:gap-8'>
+          <div className='flex flex-col gap-5 md:gap-6'>
             {/* Issuer */}
-            <p className='text-xs font-light text-gray-500 dark:text-gray-400'>
+            <p className='text-[11px] font-light text-gray-500 dark:text-gray-400'>
               Issued by{' '}
               <span className='font-medium text-gray-900 dark:text-gray-200 ml-1'>
                 {achievement.issuer}
@@ -78,17 +78,17 @@ export default function AchievementModal({
             </p>
 
             {/* Description */}
-            <p className='text-[13px] md:text-sm font-light text-gray-600 dark:text-gray-400 leading-relaxed max-w-sm'>
+            <p className='text-xs font-light text-gray-600 dark:text-gray-400 leading-relaxed'>
               {achievement.description ||
                 'Validates overall understanding and foundational knowledge of the relevant technology concepts and best practices.'}
             </p>
 
             {/* Skills Validated */}
-            <div className='flex flex-col gap-4 mt-2 md:mt-4'>
-              <h4 className='text-[10px] font-normal text-gray-400/80 tracking-[2px] uppercase'>
+            <div className='flex flex-col gap-3 mt-1'>
+              <h4 className='text-[9px] font-normal text-gray-400/80 tracking-[1.5px] uppercase'>
                 Skills Validated
               </h4>
-              <div className='flex flex-wrap items-center gap-3 text-xs font-light text-gray-900 dark:text-gray-200'>
+              <div className='flex flex-wrap items-center gap-2 text-[11px] font-light text-gray-900 dark:text-gray-200'>
                 {achievement.skills ? (
                   achievement.skills.map((skill: string, idx: number) => (
                     <div key={idx} className='flex items-center gap-3'>
@@ -117,17 +117,17 @@ export default function AchievementModal({
             </div>
           </div>
 
-          <div className='mt-auto pt-8 border-t border-gray-100 dark:border-zinc-800/60'>
+          <div className='mt-auto pt-6 border-t border-gray-100 dark:border-zinc-800/60'>
             {/* Verify Button */}
             <a
               href={achievement.verifyUrl || '#'}
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-flex items-center gap-3 text-sm font-medium text-gray-900 dark:text-gray-100 group'
+              className='inline-flex items-center gap-2.5 text-[13px] font-medium text-gray-900 dark:text-gray-100 group'
             >
               Verify Credential
               <ExternalLink
-                className='w-4 h-4 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors'
+                className='w-3.5 h-3.5 text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors'
                 strokeWidth={1.5}
               />
             </a>

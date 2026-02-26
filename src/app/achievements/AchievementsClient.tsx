@@ -1,9 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Award, Trophy, GraduationCap, Medal, ChevronDown } from 'lucide-react';
+import {
+  Award,
+  Trophy,
+  GraduationCap,
+  Medal,
+  ChevronDown,
+  Loader2,
+} from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 import AchievementModal from './AchievementModal';
+import { useCertificates } from '@/hooks/useCertificates';
 
 function AchievementCard({
   achievement,
@@ -32,30 +40,30 @@ function AchievementCard({
         )}
       </div>
 
-      <div className='flex flex-col gap-1.5 px-0.5 mt-1'>
+      <div className='flex flex-col gap-2 px-1 mt-1.5'>
         {/* Number and Date Row */}
-        <div className='flex items-center justify-between text-[8px] font-mono uppercase tracking-[1.1px] text-gray-400 dark:text-gray-500'>
+        <div className='flex items-center justify-between text-[10px] font-mono uppercase tracking-[1.1px] text-gray-400 dark:text-gray-500'>
           <span className='truncate mr-2'>{achievement.certNumber}</span>
           <span className='shrink-0'>{achievement.date}</span>
         </div>
 
         {/* Title and Issuer */}
-        <div className='flex flex-col gap-0'>
-          <h3 className='text-[11px] font-semibold text-gray-900 dark:text-gray-100 leading-snug group-hover:text-black dark:group-hover:text-white transition-colors'>
+        <div className='flex flex-col gap-0.5 mt-0.5'>
+          <h3 className='text-xs sm:text-[13px] font-semibold text-gray-900 dark:text-gray-100 leading-snug group-hover:text-black dark:group-hover:text-white transition-colors line-clamp-1'>
             {achievement.title}
           </h3>
-          <p className='text-[9px] font-serif italic text-gray-500 dark:text-gray-400 leading-relaxed mt-0.5'>
+          <p className='text-[10px] text-gray-500 dark:text-gray-400 leading-relaxed truncate'>
             {achievement.issuer}
           </p>
         </div>
 
         {/* Tags Row */}
-        <div className='flex items-center gap-1.5 mt-1 pt-2 border-t border-gray-100 dark:border-gray-800/60'>
-          <span className='text-[8px] font-medium text-gray-500 dark:text-gray-400'>
+        <div className='flex items-center gap-2 mt-1.5 pt-2.5 border-t border-gray-100 dark:border-gray-800/60'>
+          <span className='text-[10px] font-medium text-gray-500 dark:text-gray-400'>
             {achievement.type}
           </span>
           <div className='w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600' />
-          <span className='text-[8px] font-medium text-gray-500 dark:text-gray-400'>
+          <span className='text-[10px] font-medium text-gray-500 dark:text-gray-400'>
             {achievement.category}
           </span>
         </div>
@@ -64,11 +72,9 @@ function AchievementCard({
   );
 }
 
-export default function AchievementsClient({
-  achievements,
-}: {
-  achievements: any[];
-}) {
+export default function AchievementsClient() {
+  const { certificates, isLoading, isError } = useCertificates();
+
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest');
   const [selectedAchievement, setSelectedAchievement] = useState<any | null>(
     null,
@@ -86,14 +92,30 @@ export default function AchievementsClient({
     };
   }, [selectedAchievement]);
 
-  const sortedAchievements = [...achievements].sort((a, b) => {
-    const dateA = new Date(a.date).getTime();
-    const dateB = new Date(b.date).getTime();
+  // Mapping supabase data to UI format
+  const mappedAchievements =
+    certificates?.map((cert) => ({
+      id: cert.id,
+      certNumber: '', // Not available in basic table
+      date: new Date(cert.issued_at).toLocaleDateString('en-US', {
+        month: 'short',
+        year: 'numeric',
+      }),
+      actualDateValue: new Date(cert.issued_at).getTime(),
+      title: cert.title,
+      issuer: cert.issuer,
+      type: 'Certificate',
+      category: 'General',
+      image: cert.image_url,
+      description: cert.description || '',
+      skills: cert.skills || [],
+      verifyUrl: '',
+    })) || [];
 
-    // Fallback if date is invalid, though sample data is valid (e.g., 'July 2025')
-    if (isNaN(dateA) || isNaN(dateB)) return 0;
-
-    return sortOrder === 'newest' ? dateB - dateA : dateA - dateB;
+  const sortedAchievements = [...mappedAchievements].sort((a, b) => {
+    return sortOrder === 'newest'
+      ? b.actualDateValue - a.actualDateValue
+      : a.actualDateValue - b.actualDateValue;
   });
 
   return (
@@ -113,7 +135,7 @@ export default function AchievementsClient({
           </div>
 
           {/* Grid Section */}
-          <div className='flex flex-col gap-4 mt-2'>
+          <div className='flex flex-col gap-4 mt-2 border-t border-gray-100 dark:border-gray-800/60 pt-6'>
             <div className='flex justify-end'>
               <div className='relative'>
                 <select
@@ -131,19 +153,34 @@ export default function AchievementsClient({
                 </div>
               </div>
             </div>
-            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-              {sortedAchievements.map((item) => (
-                <div
-                  key={item.id}
-                  className='animate-in fade-in zoom-in-95 duration-300'
-                >
-                  <AchievementCard
-                    achievement={item}
-                    onClick={() => setSelectedAchievement(item)}
-                  />
-                </div>
-              ))}
-            </div>
+
+            {isLoading ? (
+              <div className='flex justify-center items-center py-20'>
+                <Loader2 className='w-6 h-6 animate-spin text-gray-400' />
+              </div>
+            ) : isError ? (
+              <div className='text-center py-10 text-sm text-red-500'>
+                Failed to automatically load certificates.
+              </div>
+            ) : sortedAchievements.length === 0 ? (
+              <div className='text-center py-10 text-sm text-gray-500'>
+                No certificates found.
+              </div>
+            ) : (
+              <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+                {sortedAchievements.map((item) => (
+                  <div
+                    key={item.id}
+                    className='animate-in fade-in zoom-in-95 duration-300'
+                  >
+                    <AchievementCard
+                      achievement={item}
+                      onClick={() => setSelectedAchievement(item)}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 

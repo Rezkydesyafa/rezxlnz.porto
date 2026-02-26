@@ -68,76 +68,20 @@ export default function AboutPage() {
             {t.about.skills}
           </h2>
           <ul className='flex flex-col gap-3 text-xs text-gray-600 dark:text-gray-400'>
-            <li className='flex gap-2 items-start'>
-              <span className='text-gray-300 dark:text-gray-600'>•</span>
-              <div>
-                <strong className='font-medium text-gray-900 dark:text-gray-100'>
-                  {t.about.languages}
-                </strong>
-                <span className='font-light'>
-                  {' '}
-                  : Go, Python, Java, Typescript.
-                </span>
-              </div>
-            </li>
-            <li className='flex gap-2 items-start'>
-              <span className='text-gray-300 dark:text-gray-600'>•</span>
-              <div>
-                <strong className='font-medium text-gray-900 dark:text-gray-100'>
-                  {t.about.databases}
-                </strong>
-                <span className='font-light'>
-                  {' '}
-                  : MySQL (MariaDB), PostgreSQL, Redis, MongoDB.
-                </span>
-              </div>
-            </li>
-            <li className='flex gap-2 items-start'>
-              <span className='text-gray-300 dark:text-gray-600'>•</span>
-              <div>
-                <strong className='font-medium text-gray-900 dark:text-gray-100'>
-                  {t.about.streaming}
-                </strong>
-                <span className='font-light'> : Kafka, RabbitMQ.</span>
-              </div>
-            </li>
-            <li className='flex gap-2 items-start'>
-              <span className='text-gray-300 dark:text-gray-600'>•</span>
-              <div>
-                <strong className='font-medium text-gray-900 dark:text-gray-100'>
-                  {t.about.containerization}
-                </strong>
-                <span className='font-light'>
-                  {' '}
-                  : Docker, Podman, Kubernetes.
-                </span>
-              </div>
-            </li>
-            <li className='flex gap-2 items-start'>
-              <span className='text-gray-300 dark:text-gray-600'>•</span>
-              <div>
-                <strong className='font-medium text-gray-900 dark:text-gray-100'>
-                  {t.about.cloud}
-                </strong>
-                <span className='font-light'>
-                  {' '}
-                  : Google Cloud Platform, Microsoft Azure.
-                </span>
-              </div>
-            </li>
-            <li className='flex gap-2 items-start'>
-              <span className='text-gray-300 dark:text-gray-600'>•</span>
-              <div>
-                <strong className='font-medium text-gray-900 dark:text-gray-100'>
-                  {t.about.technical_skills}
-                </strong>
-                <span className='font-light'>
-                  {' '}
-                  : Git Conventional Commits, CI/CD, System Design, Performance
-                  Optimization, Clean Code.
-                </span>
-              </div>
-            </li>
+            {t.about.skillsList.map((skill, i) => (
+              <li key={i} className='flex gap-2 items-start'>
+                <span className='text-gray-300 dark:text-gray-600'>•</span>
+                <div>
+                  <strong className='font-medium text-gray-900 dark:text-gray-100'>
+                    {skill.category}
+                  </strong>
+                  <span className='font-light'>
+                    {' : '}
+                    {skill.details}
+                  </span>
+                </div>
+              </li>
+            ))}
           </ul>
         </motion.section>
 
@@ -161,7 +105,7 @@ export default function AboutPage() {
               <div className='flex-1'>{t.about.company_header}</div>
             </div>
 
-            {t.home.experienceList.map((exp, i) => (
+            {t.about.experienceList.map((exp, i) => (
               <motion.div
                 key={i}
                 whileHover={{ x: 6 }}
