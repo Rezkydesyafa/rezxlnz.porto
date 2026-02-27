@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang='en' className='scroll-smooth' suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased text-gray-900 bg-white dark:bg-[#0a0a0a] dark:text-gray-100 flex min-h-screen`}
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased text-gray-900 bg-white dark:bg-[#0a0a0a] dark:text-gray-100 flex min-h-screen overflow-x-hidden`}
       >
         <ThemeProvider
           attribute='class'
