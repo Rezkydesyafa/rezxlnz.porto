@@ -39,10 +39,28 @@ export function getMDXData(dir: string) {
   });
 }
 
+// Optimization: Get only metadata to save memory when listing files
+export function getMDXMetadataOnly(dir: string) {
+  const mdxFiles = getMDXFiles(dir);
+  return mdxFiles.map((file) => {
+    const rawContent = fs.readFileSync(path.join(dir, file), 'utf-8');
+    const { data } = matter(rawContent);
+    const slug = path.basename(file, path.extname(file));
+    return {
+      metadata: data as MDXMetadata,
+      slug,
+    };
+  });
+}
+
 export function getProjects() {
   return getMDXData(path.join(process.cwd(), 'content', 'projects'));
 }
 
 export function getWritings() {
   return getMDXData(path.join(process.cwd(), 'content', 'writings'));
+}
+
+export function getWritingsMetadata() {
+  return getMDXMetadataOnly(path.join(process.cwd(), 'content', 'writings'));
 }

@@ -38,7 +38,27 @@ export const experience = [
     date: 'May 2023',
     role: 'Program Participant',
     description: 'Baparekraf Digital Talent 2023',
-    responsibilities: [],
+    responsibilities: [
+      'Developed a responsive website project using HTML and CSS',
+      'Implemented structured layouts and styling based on modern web standards',
+      'Applied basic UI/UX principles to improve user experience and visual consistency',
+      'Completed project-based assignments within a defined timeline',
+      'Collaborated in a remote learning environment and presented project outcomes',
+    ],
+  },
+  {
+    company: 'CV Ersa Digital Printing',
+    status: '',
+    date: 'Jan 2023 - June 2023',
+    role: 'Graphic Designer',
+    description: 'Graphic Designer',
+    responsibilities: [
+      'Designed promotional banners based on client requirements and brand guidelines',
+      'Operated and maintained large-format outdoor printing machines to ensure print quality',
+      'Supported sticker cutting and ID card production with strong attention to detail',
+      'Delivered customer-focused solutions and ensured timely project completion',
+      'Collaborated with team members to meet production targets and deadlines',
+    ],
   },
 ];
 

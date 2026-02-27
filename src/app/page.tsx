@@ -3,7 +3,7 @@
 import { motion, Variants } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
-import { stack } from '@/data/home';
+import { stack, experience, projects, writings } from '@/data/home';
 import { dictionary as t } from '@/lib/dictionaries';
 const containerVariants: any = {
   hidden: { opacity: 0 },
@@ -118,12 +118,10 @@ export default function Home() {
         </h2>
 
         <div className='relative border-l-2 border-gray-200 dark:border-gray-800 ml-3 flex flex-col gap-8'>
-          {t.home.experienceList.map((exp, i) => (
+          {experience.map((exp, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
-              whileHover={{ x: 4 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
               className='relative pl-8 group cursor-default'
             >
               {/* Timeline dot */}
@@ -211,7 +209,7 @@ export default function Home() {
         </h2>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8'>
-          {t.home.projectList.map((project, i) => (
+          {projects.map((project, i) => (
             <motion.div
               key={i}
               variants={itemVariants}
@@ -256,7 +254,7 @@ export default function Home() {
         </h2>
 
         <div className='grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4'>
-          {t.home.writingList.map((writing, i) => (
+          {writings.map((writing, i) => (
             <motion.div
               key={i}
               variants={itemVariants}

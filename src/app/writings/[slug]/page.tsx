@@ -1,11 +1,11 @@
-import { getWritings, readMDXFile } from '@/lib/mdx';
+import { getWritingsMetadata, readMDXFile } from '@/lib/mdx';
 import path from 'path';
 import Link from 'next/link';
 import { ArrowLeft, Link as LinkIcon } from 'lucide-react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
 export async function generateStaticParams() {
-  const writings = getWritings();
+  const writings = getWritingsMetadata();
   return writings.map((writing) => ({
     slug: writing.slug,
   }));
@@ -60,7 +60,7 @@ export default async function WritingPage({
   const { metadata, content } = readMDXFile(filePath);
   const headings = extractHeadings(content);
 
-  const allWritings = getWritings().sort((a, b) => {
+  const allWritings = getWritingsMetadata().sort((a, b) => {
     return (
       new Date(b.metadata.date || '').getTime() -
       new Date(a.metadata.date || '').getTime()

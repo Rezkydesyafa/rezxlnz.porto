@@ -63,23 +63,27 @@ export const aboutData = {
       description: 'Baparekraf Digital Talent 2023',
       responsibilities: [],
     },
+    {
+      company: 'CV Ersa Digital Printing',
+      status: '',
+      date: 'May 2023',
+      role: 'Graphic Designer',
+      description: 'Graphic Designer',
+      responsibilities: [],
+    },
   ],
   honors: 'Certifications',
   honorsList: [
     {
-      title: 'Graduated with Distinction (Top 10%) from the',
-      linkText: 'Bangkit Machine Learning Path',
-      linkUrl: '#',
+      title: 'Alibaba Cloud Certified Developer',
+      linkText: 'Alibaba Cloud',
+      linkUrl: 'https://www.alibabacloud.com/support/certification',
     },
     {
-      title: 'Microsoft PL-300',
-      linkText: 'PowerBI Data Analyst',
-      linkUrl: '#',
-    },
-    {
-      title: 'Finalist of',
-      linkText: 'Hology Competitive Programming',
-      linkUrl: '#',
+      title: '3rd Place in the 2026 Student Organization Innovation Festival',
+      linkText: 'BEM KM UNISA',
+      linkUrl:
+        'https://www.instagram.com/p/B64w7_1H4lQ/?utm_source=ig_web_copy_link',
     },
   ],
   online_presence: 'Online Presence',
