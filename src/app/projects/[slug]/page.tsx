@@ -90,7 +90,9 @@ export default async function ProjectPage({
                   Year
                 </span>
                 <span className='text-xs font-medium text-gray-900 dark:text-gray-100'>
-                  {metadata.year || '2024'}
+                  {metadata.date
+                    ? new Date(metadata.date).getFullYear()
+                    : metadata.year || 'Unknown'}
                 </span>
               </div>
               <div className='flex flex-col gap-1'>

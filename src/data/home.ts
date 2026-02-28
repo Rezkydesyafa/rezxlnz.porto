@@ -75,11 +75,12 @@ export const projects = [
       'A web-based dashboard built to control and monitor a smart IoT fan device in real time.',
     link: '/projects/airlink-iot',
   },
-  // {
-  //   title: 'Club affection ecommerce',
-  //   description: 'An app for storing and sharing favorite recipes.',
-  //   link: '/projects/club-affection',
-  // },
+  {
+    title: 'Club Affection E-Commerce',
+    description:
+      'A modern e-commerce platform featuring a shopping cart, checkout system, and Midtrans payment gateway integration.',
+    link: '/projects/club-affection',
+  },
   {
     title: 'Jepretin Aja!',
     description:

@@ -64,8 +64,9 @@ export const dictionary = {
         link: '/projects/airlink-iot',
       },
       {
-        title: 'Club affection ecommerce',
-        description: 'An app for storing and sharing favorite recipes.',
+        title: 'Club Affection E-Commerce',
+        description:
+          'A modern e-commerce platform featuring a shopping cart, checkout system, and Midtrans payment gateway integration.',
         link: '/projects/club-affection',
       },
       {
