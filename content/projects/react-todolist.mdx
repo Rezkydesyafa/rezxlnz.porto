@@ -1,0 +1,94 @@
+---
+title: 'YourTodo'
+date: '2026'
+description: 'A modern and responsive To-Do List web application built with React JS and Bootstrap 5.3. Features smooth animations, clean design, and practical task management.'
+tags: ['React', 'Bootstrap', 'Vite', 'Framer Motion']
+category: 'Web App'
+role: 'Frontend Developer'
+liveUrl: 'https://yourtodo-six.vercel.app/'
+githubUrl: 'https://github.com/Rezkydesyafa/react-TodoList-Bootstrap'
+image: '/assets/project/yourtodo-1.png'
+---
+
+## Overview
+
+**YourTodo** is a modern and responsive To-Do List web application built with React JS and Bootstrap 5.3. This project features smooth animations, clean design, and practical task management — including priorities, due dates, filtering, and sorting.
+
+<ImageGrid>
+  <ProjectImage
+    src='/assets/project/yourtodo-1.png'
+    caption='YourTodo Dashboard'
+  />
+  <ProjectImage
+    src='/assets/project/yourtodo-2.png'
+    caption='Task Management Interface'
+  />
+</ImageGrid>
+
+## Features
+
+- **Full CRUD:** Add, edit, and delete tasks easily.
+- **Prioritization:** Assign priority levels (High, Medium, Low).
+- **Status Tracking:** Manage task status (To Do, In Progress, Done).
+- **Time Management:** Set and display due dates dynamically.
+- **Advanced Filtering & Sorting:** Filter tasks by completion status (All, Active, Completed) and sort tasks by priority, status, or due date.
+- **Data Persistence:** Persistent data using the LocalStorage API.
+- **Fluid UI:** Smooth animations powered by Framer Motion.
+- **Responsive:** Fully responsive layout using Bootstrap 5.
+
+## Tech Stack
+
+- **React 19 + Vite:** Fast, modern frontend framework and build tool.
+- **Bootstrap 5.3:** For styling and responsive layout.
+- **Framer Motion:** For fluid interface animations.
+- **React Icons:** Scalable and customizable SVG icons.
+- **LocalStorage API:** For client-side data persistence.
+
+## Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Rezkydesyafa/react-TodoList-Bootstrap.git
+   cd react-TodoList-Bootstrap
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production**
+
+   ```bash
+   npm run build
+   ```
+
+## Folder Structure
+
+```text
+react-TodoList-Bootstrap/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── FilterBar.jsx
+│   │   ├── SortBar.jsx
+│   │   ├── TodoItem.jsx
+│   │   ├── EditModal.jsx
+│   │   └── MotionWrapper.jsx
+│   ├── hooks/
+│   │   └── useLocalStorage.js
+│   ├── styles/
+│   │   └── todo.css
+│   ├── App.jsx
+│   └── main.jsx
+├── package.json
+└── vite.config.js
+```

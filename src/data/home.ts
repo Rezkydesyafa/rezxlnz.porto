@@ -75,11 +75,11 @@ export const projects = [
       'A web-based dashboard built to control and monitor a smart IoT fan device in real time.',
     link: '/projects/airlink-iot',
   },
-  {
-    title: 'Club affection ecommerce',
-    description: 'An app for storing and sharing favorite recipes.',
-    link: '/projects/club-affection',
-  },
+  // {
+  //   title: 'Club affection ecommerce',
+  //   description: 'An app for storing and sharing favorite recipes.',
+  //   link: '/projects/club-affection',
+  // },
   {
     title: 'Jepretin Aja!',
     description:
@@ -91,6 +91,12 @@ export const projects = [
     description:
       'A web-based security application designed to protect text data using cryptographic algorithms.',
     link: '/projects/acu-kriptografi',
+  },
+  {
+    title: 'YourTodo',
+    description:
+      'A modern and responsive To-Do List web application built with React JS and Bootstrap 5.3.',
+    link: '/projects/react-todolist',
   },
 ];
 
