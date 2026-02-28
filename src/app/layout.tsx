@@ -15,6 +15,9 @@ import ClientCursor from '@/components/ui/ClientCursor';
 export const metadata: Metadata = {
   title: 'Mohamad Dwi Rezky Desyafa - Portfolio',
   description: 'Backend & AI Engineer Portfolio',
+  icons: {
+    icon: '/assets/icon.svg',
+  },
 };
 
 export default function RootLayout({
