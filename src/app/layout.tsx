@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import { Sidebar } from '@/components/sidebar/Sidebar';
+import { MobileNav } from '@/components/sidebar/MobileNav';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
@@ -33,8 +34,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ClientCursor />
+          <MobileNav />
           <Sidebar />
-          <main className='flex-1 ml-[250px] p-8 md:p-12 lg:p-16'>
+          <main className='flex-1 md:ml-[250px] p-8 mt-16 md:mt-0 md:p-12 lg:p-16'>
             {children}
           </main>
         </ThemeProvider>
