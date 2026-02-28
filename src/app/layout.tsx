@@ -36,7 +36,7 @@ export default function RootLayout({
           <ClientCursor />
           <MobileNav />
           <Sidebar />
-          <main className='flex-1 md:ml-[250px] p-8 mt-16 md:mt-0 md:p-12 lg:p-16'>
+          <main className='flex-1 md:ml-[250px] px-6 py-8 mt-16 md:mt-0 md:p-12 lg:p-16 overflow-hidden'>
             {children}
           </main>
         </ThemeProvider>

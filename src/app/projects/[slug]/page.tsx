@@ -52,9 +52,9 @@ export default async function ProjectPage({
   const { metadata, content } = readMDXFile(filePath);
 
   return (
-    <article className='flex flex-col lg:flex-row gap-12 lg:gap-16 pb-20'>
+    <article className='flex flex-col lg:flex-row gap-12 lg:gap-16 pb-20 w-full overflow-hidden'>
       {/* Main Content */}
-      <div className='flex-1 max-w-2xl flex flex-col gap-10'>
+      <div className='flex-1 max-w-2xl w-full min-w-0 flex flex-col gap-10'>
         <div className='flex flex-col gap-3'>
           <Link
             href='/projects'
@@ -62,15 +62,15 @@ export default async function ProjectPage({
           >
             <ArrowLeft className='w-3 h-3' /> Back to projects
           </Link>
-          <h1 className='text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50'>
+          <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-50'>
             {metadata.title}
           </h1>
-          <p className='text-sm font-light text-gray-500 dark:text-gray-400 leading-relaxed'>
+          <p className='text-xs md:text-sm font-light text-gray-500 dark:text-gray-400 leading-relaxed'>
             {metadata.description}
           </p>
         </div>
 
-        <div className='prose prose-sm prose-zinc dark:prose-invert max-w-none prose-headings:font-bold prose-img:rounded-md prose-a:text-blue-500 hover:prose-a:text-blue-600 font-light leading-relaxed mt-4'>
+        <div className='prose prose-sm md:prose-base prose-zinc dark:prose-invert max-w-none w-full overflow-hidden prose-headings:font-bold prose-img:rounded-md prose-a:text-blue-500 hover:prose-a:text-blue-600 font-light leading-relaxed mt-4 prose-p:text-xs md:prose-p:text-sm prose-li:text-xs md:prose-li:text-sm prose-h1:text-xl md:prose-h1:text-2xl prose-h2:text-lg md:prose-h2:text-xl prose-h3:text-base md:prose-h3:text-lg prose-pre:overflow-x-auto prose-pre:max-w-full'>
           <MDXRemote source={content} components={mdxComponents} />
         </div>
       </div>

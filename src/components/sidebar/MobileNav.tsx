@@ -47,7 +47,7 @@ export function MobileNav() {
               className='object-cover grayscale hover:grayscale-0 transition-all duration-300'
             />
           </div>
-          <span className='font-bold text-sm tracking-tight'>M. Rezky</span>
+          <span className='font-bold text-sm tracking-tight'>Rezxlnz</span>
         </div>
         <button
           onClick={() => setIsOpen(true)}
@@ -77,7 +77,7 @@ export function MobileNav() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className='fixed top-0 right-0 bottom-0 w-3/4 max-w-sm bg-white dark:bg-[#0a0a0a] z-50 flex flex-col shadow-2xl border-l border-gray-200/50 dark:border-gray-800/50'
+              className='fixed top-0 right-0 bottom-0 w-48 bg-white dark:bg-[#0a0a0a] z-50 flex flex-col shadow-xl border-l border-gray-200/50 dark:border-gray-800/50'
             >
               <div className='flex items-center justify-between p-6 border-b border-gray-100 dark:border-gray-800/60'>
                 <span className='font-bold text-sm'>Menu</span>
