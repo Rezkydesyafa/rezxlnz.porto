@@ -49,7 +49,7 @@ export default function Home() {
 
           <div className='flex flex-col gap-2.5 text-gray-500 dark:text-gray-400 md:absolute md:-right-24 lg:-right-36 xl:-right-48 md:top-2'>
             <a
-              href='https://github.com'
+              href='https://github.com/Rezkydesyafa'
               target='_blank'
               rel='noreferrer'
               className='flex items-center gap-2 hover:text-gray-900 dark:hover:text-gray-100 transition-colors group'
@@ -60,7 +60,7 @@ export default function Home() {
               </span>
             </a>
             <a
-              href='https://linkedin.com'
+              href='https://www.linkedin.com/in/rezkydesyafa/'
               target='_blank'
               rel='noreferrer'
               className='flex items-center gap-2 hover:text-gray-900 dark:hover:text-gray-100 transition-colors group'
@@ -71,7 +71,7 @@ export default function Home() {
               </span>
             </a>
             <a
-              href='mailto:email@example.com'
+              href='mailto:rezkydesyafa@gmail.com'
               className='flex items-center gap-2 hover:text-gray-900 dark:hover:text-gray-100 transition-colors group'
             >
               <Mail className='w-3.5 h-3.5 opacity-70 group-hover:opacity-100 transition-opacity' />
@@ -89,7 +89,7 @@ export default function Home() {
 
         <div className='flex flex-wrap gap-3 mt-3'>
           <a
-            href='https://linkedin.com'
+            href='https://www.linkedin.com/in/rezkydesyafa/'
             target='_blank'
             rel='noreferrer'
             className='inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/40 dark:bg-black/40 border border-gray-200 dark:border-gray-800 text-xs font-medium hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors'
@@ -97,7 +97,7 @@ export default function Home() {
             LinkedIn <ArrowRight className='w-3 h-3 -rotate-45' />
           </a>
           <a
-            href='mailto:email@example.com'
+            href='mailto:rezkydesyafa@gmail.com'
             className='inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white/40 dark:bg-black/40 border border-gray-200 dark:border-gray-800 text-xs font-medium hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors'
           >
             Email <span className='text-gray-400'>@</span>

@@ -176,7 +176,7 @@ export default function AboutPage() {
           <div className='flex flex-wrap items-center gap-2.5 text-xs text-gray-500 dark:text-gray-400'>
             <motion.a
               whileHover={{ scale: 1.05 }}
-              href='https://linkedin.com'
+              href='https://www.linkedin.com/in/rezkydesyafa/'
               target='_blank'
               rel='noreferrer'
               className='inline-flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors duration-300'
@@ -186,7 +186,7 @@ export default function AboutPage() {
             <span>/</span>
             <motion.a
               whileHover={{ scale: 1.05 }}
-              href='https://github.com'
+              href='https://github.com/Rezkydesyafa'
               target='_blank'
               rel='noreferrer'
               className='inline-flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors duration-300'
@@ -196,17 +196,17 @@ export default function AboutPage() {
             <span>/</span>
             <motion.a
               whileHover={{ scale: 1.05 }}
-              href='https://twitter.com'
+              href='https://www.instagram.com/rezxlnz/?hl=id'
               target='_blank'
               rel='noreferrer'
               className='inline-flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors duration-300'
             >
-              Twitter <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
+              Instagram <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
             </motion.a>
             <span>/</span>
             <motion.a
               whileHover={{ scale: 1.05 }}
-              href='mailto:email@example.com'
+              href='mailto:rezkydesyafa@gmail.com'
               className='inline-flex items-center gap-1 hover:text-black dark:hover:text-white transition-colors duration-300'
             >
               Mail <ArrowRight className='w-2.5 h-2.5 -rotate-45' />
@@ -255,7 +255,7 @@ export default function AboutPage() {
           </h3>
           <nav className='flex flex-col gap-2.5 text-xs text-right w-full lg:w-auto'>
             <a
-              href='https://github.com'
+              href='https://github.com/Rezkydesyafa'
               target='_blank'
               rel='noreferrer'
               className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
@@ -266,7 +266,7 @@ export default function AboutPage() {
               </span>
             </a>
             <a
-              href='https://linkedin.com'
+              href='https://www.linkedin.com/in/rezkydesyafa/'
               target='_blank'
               rel='noreferrer'
               className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
@@ -277,18 +277,18 @@ export default function AboutPage() {
               </span>
             </a>
             <a
-              href='https://twitter.com'
+              href='https://www.instagram.com/rezxlnz/?hl=id'
               target='_blank'
               rel='noreferrer'
               className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
             >
-              <span>Twitter</span>
+              <span>Instagram</span>
               <span className='w-4 flex justify-center text-[10px] font-mono opacity-50 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300'>
                 ↗
               </span>
             </a>
             <a
-              href='mailto:email@example.com'
+              href='mailto:rezkydesyafa@gmail.com'
               className='flex flex-row items-center justify-end gap-3 group text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors duration-300'
             >
               <span>Email</span>

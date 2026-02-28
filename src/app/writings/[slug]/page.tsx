@@ -122,12 +122,12 @@ export default async function WritingPage({
               {formatDate(metadata.date || '')}
             </time>
             {/* Title */}
-            <h1 className='text-2xl md:text-[32px] font-bold tracking-tight text-gray-900 dark:text-gray-50 leading-[1.1] max-w-2xl'>
+            <h1 className='text-xl md:text-[32px] font-bold tracking-tight text-gray-900 dark:text-gray-50 leading-[1.1] max-w-2xl'>
               {metadata.title}
             </h1>
             {/* Description / Lead */}
             {metadata.description && (
-              <p className='text md:text-md text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-2xl mt-2'>
+              <p className='text-xs md:text-sm text-gray-500 dark:text-gray-400 font-light leading-relaxed max-w-2xl mt-2'>
                 {metadata.description}
               </p>
             )}
@@ -139,13 +139,13 @@ export default async function WritingPage({
         <div
           className='prose prose-zinc dark:prose-invert max-w-none 
           prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-gray-100
-          prose-h2:text-xl prose-h2:mt-12 prose-h2:mb-6
-          prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-4
-          prose-p:text-[14px] prose-p:leading-relaxed prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:mb-5
+          prose-h2:text-lg md:prose-h2:text-xl prose-h2:mt-12 prose-h2:mb-6
+          prose-h3:text-base md:prose-h3:text-lg prose-h3:mt-8 prose-h3:mb-4
+          prose-p:text-xs md:prose-p:text-[14px] prose-p:leading-relaxed prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:mb-5
           prose-a:text-gray-900 dark:prose-a:text-gray-100 prose-a:underline-offset-4 prose-a:decoration-1 hover:prose-a:decoration-2
           prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:text-gray-900 dark:prose-code:text-gray-100 prose-code:font-medium prose-code:before:content-none prose-code:after:content-none
-          prose-pre:bg-gray-50 dark:prose-pre:bg-[#111] prose-pre:border prose-pre:border-gray-100 dark:prose-pre:border-gray-800 prose-pre:text-sm prose-pre:p-6
-          prose-blockquote:border-l-2 prose-blockquote:border-gray-200 dark:prose-blockquote:border-gray-700 prose-blockquote:pl-6 prose-blockquote:font-normal prose-blockquote:text-gray-500 dark:prose-blockquote:text-gray-400 prose-blockquote:italic'
+          prose-pre:bg-gray-50 dark:prose-pre:bg-[#111] prose-pre:border prose-pre:border-gray-100 dark:prose-pre:border-gray-800 prose-pre:text-xs md:prose-pre:text-sm prose-pre:p-4 md:prose-pre:p-6 prose-pre:max-w-full prose-pre:overflow-x-auto
+          prose-blockquote:border-l-2 prose-blockquote:border-gray-200 dark:prose-blockquote:border-gray-700 prose-blockquote:pl-6 prose-blockquote:font-normal prose-blockquote:text-gray-500 dark:prose-blockquote:text-gray-400 prose-blockquote:text-sm prose-blockquote:italic'
         >
           <MDXRemote source={content} components={mdxComponents} />
         </div>
@@ -254,12 +254,12 @@ export default async function WritingPage({
           </h3>
           <div className='flex flex-col gap-3 text-[12px] text-gray-500 dark:text-gray-400 font-medium'>
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(metadata.title)}`}
+              href='https://www.instagram.com/rezxlnz/?hl=id'
               target='_blank'
               rel='noopener noreferrer'
               className='hover:text-gray-900 dark:hover:text-gray-100 transition-colors'
             >
-              Twitter
+              Instagram
             </a>
             <a
               href={`https://www.linkedin.com/shareArticle?mini=true&title=${encodeURIComponent(metadata.title)}`}
